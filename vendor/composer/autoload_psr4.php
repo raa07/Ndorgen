@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Tools\\' => array($baseDir . '/tools'),
     'Symfony\\Polyfill\\Php55\\' => array($vendorDir . '/symfony/polyfill-php55'),
     'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Sokil\\Mongo\\' => array($vendorDir . '/sokil/php-mongo/src', $vendorDir . '/sokil/php-mongo/tests'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'MongoDB\\' => array($vendorDir . '/mongodb/mongodb/src'),
+    'App\\' => array($baseDir . '/app'),
 );

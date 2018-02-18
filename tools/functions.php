@@ -2,5 +2,5 @@
 
 function Dorgen()
 {
-    return Dorgen::getInstance();
+    return App\Dorgen::getInstance();
 }

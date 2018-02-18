@@ -1,5 +1,7 @@
 <?php
 
+namespace Tools;
+
 class Router
 {
 
@@ -18,7 +20,7 @@ class Router
             extract($route_params);
             $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
             if ($url === $route) {
-                $controller_path = __DIR__.'/../app/controllers/'.$controller_name.'.php';
+                $controller_path = __DIR__ . '/../app/Controllers/' .$controller_name.'.php';
                 if (file_exists ( $controller_path)) {
                     require_once($controller_path);
                     $controller = new $controller_name;

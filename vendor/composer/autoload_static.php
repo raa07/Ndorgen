@@ -13,6 +13,10 @@ class ComposerStaticInit26d82a6c4e376172becbaab254866fe4
     );
 
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Tools\\' => 6,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php55\\' => 23,
@@ -28,9 +32,17 @@ class ComposerStaticInit26d82a6c4e376172becbaab254866fe4
         array (
             'MongoDB\\' => 8,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Tools\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tools',
+        ),
         'Symfony\\Polyfill\\Php55\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php55',
@@ -55,6 +67,10 @@ class ComposerStaticInit26d82a6c4e376172becbaab254866fe4
         'MongoDB\\' => 
         array (
             0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
