@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 
 require_once(__DIR__ .'/../vendor/autoload.php'); // require composer autoload
 require_once(__DIR__ .'/../tools/functions.php'); // require helper functions
-require_once(__DIR__ .'/../app/conf/routes.php'); // require file with routes
-
+require_once(__DIR__ .'/../app/conf/routes.php'); // require helper functions
 
 Dorgen()::init(); // init the application
