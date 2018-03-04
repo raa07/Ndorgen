@@ -21,4 +21,9 @@ class MainController
 
         View::result('template1/index', ['posts' => $posts]);
     }
+
+    public function post()
+    {
+        View::result('template1/post', ['post' => []]);
+    }
 }
