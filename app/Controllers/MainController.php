@@ -19,11 +19,19 @@ class MainController
 //        $test2 = new ContentRambler;
 //        var_dump($test2->parse_links_desc('test'));
 
-        View::result('template1/index', ['posts' => $posts]);
+
+
+        return View::result('template1/index', ['posts' => $posts]);
     }
 
     public function post()
     {
-        View::result('template1/post', ['post' => []]);
+        if(!isset($_REQUEST['id'])) return View::result('template1/404');
+        $id = $_REQUEST['id'];
+        $post =  new Posts;
+        $post = $post->getPost($id);
+
+        if(!empty($post)) return View::result('template1/post', ['post' => $post]);
+        else return View::result('template1/404');
     }
 }
