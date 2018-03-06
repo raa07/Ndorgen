@@ -1,8 +1,10 @@
 <?php
 
-namespace Tools\Parsers\Titles;
+namespace Tools\Parsers\Title;
 
-class TitleRambler extends TitleParser//парсер названиев для постов
+use Tools\Parsers\ParserInterface;
+
+final class RamblerTitleParser extends TitleParser implements ParserInterface//парсер названиев для постов
 {
     const USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36';
 

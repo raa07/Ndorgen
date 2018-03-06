@@ -2,7 +2,9 @@
 
 namespace Tools\Parsers\Content;
 
-class ContentRambler extends ContentParser
+use Tools\Parsers\ParserInterface;
+
+final class RamblerContentParser extends ContentParser implements ParserInterface
 {
     const USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36';
 

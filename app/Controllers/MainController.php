@@ -3,8 +3,10 @@
 
 use App\View;
 use App\Models\Posts;
-use Tools\Parsers\Titles\TitleRambler;
-use Tools\Parsers\Content\ContentRambler;
+
+use Tools\Parsers\Title\RamblerTitleParser;
+use Tools\Parsers\Content\RamblerContentParser;
+use Tools\Parsers\Comment\RamblerCommentParser;
 
 class MainController
 {
@@ -13,11 +15,14 @@ class MainController
         $posts = new Posts;
         $posts = $posts->all();
 
-//        $test = new TitleRambler(100, 'test');
-//        var_dump($test->run());
+//        $test = new RamblerTitleParser;
+//        var_dump($test->run('test', 10, 1));
+//
+//        $test2 = new RamblerContentParser;
+//        var_dump($test2->run('test', 10, 1));
 
-//        $test2 = new ContentRambler;
-//        var_dump($test2->parse_links_desc('test'));
+//        $test3 = new RamblerCommentParser;
+//        var_dump($test3->run('machine learning', 10, 1));
 
 
 

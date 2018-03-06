@@ -1,24 +1,26 @@
 <?php
 namespace Tools\Parsers\Content;
 
-class ContentParser//парсер контента
+use Tools\Parsers\Parser;
+
+//парсер контента
+class ContentParser extends Parser
 {
-    private function request($url)//запрос к поиску
+    private $results_count;
+    private $page;
+    private $keyword;
+
+    public function run($keyword, $result_count, $page=1)
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
-        curl_setopt($ch, CURLOPT_USERAGENT, static::USER_AGENT);
-        curl_setopt($ch, CURLOPT_FTP_SSL, CURLFTPSSL_TRY);
-        $result = curl_exec($ch);
+        $result = $this->parse();
+
+        array_slice($result, 0, $this->results_count);//берём только необходимое количество
         return $result;
     }
-    public function parse_links_desc($keyword, $page=1)//получаем ссылки и дискрипшены по ключевику на page странице
+
+    protected function parse()//получаем ссылки и дискрипшены по ключевику на page странице
     {
-        $url = $this->compareUrl($keyword, $page);
+        $url = $this->compareUrl($this->keyword, $this->page);
         $data = $this->request($url);
 
         preg_match_all(static::DESC_REGEX, $data, $descs);//получаем дискрипшенны
@@ -28,7 +30,7 @@ class ContentParser//парсер контента
         $links = $links[1];
         foreach($descs as $key=>$desc)
         {
-            $desc_result = $this->validate_content($desc);//проводим валидацию дискрипшена
+            $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
             if(!$desc_result){
                 unset($descs[$key]);
                 unset($links[$key]);//плохой контент - выбрасываем ссылку
@@ -37,7 +39,8 @@ class ContentParser//парсер контента
         }
         return [$links, $descs];
     }
-    public function validate_content($content)//проводим валидацию контента и удаляем всё лишнее
+
+    protected function validate($content)//проводим валидацию контента и удаляем всё лишнее
     {
         $content = strip_tags($content);
         $content = preg_replace('/(pdf.*)$/', '', $content);
@@ -50,7 +53,7 @@ class ContentParser//парсер контента
         $content = trim($content);
         if(!preg_match('/([а-яА-Я])/u', $content)) $result = false;//если нету русских букв
         if(!preg_match('/( )/u', $content)) $result = false;
-        $result = ucfirst($content);//делаем первую букву заглавной
+        if(!isset($result)) $result = ucfirst($content);//делаем первую букву заглавной
 
         return $result;
     }
