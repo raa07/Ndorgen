@@ -12,32 +12,56 @@ class ContentParser extends Parser
 
     public function run($keyword, $result_count, $page=1)
     {
+        $this->keyword = $keyword;
+        $this->results_count = $result_count;
+        $this->page = $page;
+
         $result = $this->parse();
 
-        array_slice($result, 0, $this->results_count);//берём только необходимое количество
         return $result;
     }
 
     protected function parse()//получаем ссылки и дискрипшены по ключевику на page странице
     {
-        $url = $this->compareUrl($this->keyword, $this->page);
-        $data = $this->request($url);
+        $descs = [];
 
-        preg_match_all(static::DESC_REGEX, $data, $descs);//получаем дискрипшенны
-        preg_match_all(static::LINK_REGEX, $data, $links);//получаем ссылки
+        $links = [];
+        $tries = 0;
 
-        $descs = $descs[0];
-        $links = $links[1];
-        foreach($descs as $key=>$desc)
+        while(count($links) < $this->results_count && $tries <5)//пока не получим нужное кличество контента или пока не накапает 5 попыток
         {
-            $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
-            if(!$desc_result){
-                unset($descs[$key]);
-                unset($links[$key]);//плохой контент - выбрасываем ссылку
+            $url = $this->compareUrl($this->keyword, $this->page);
+            $data = $this->request($url);
+
+            preg_match_all(static::DESC_REGEX, $data, $desc);//получаем дискрипшенны
+            preg_match_all(static::LINK_REGEX, $data, $link);//получаем ссылки
+
+            $descs = array_merge($descs, $desc[0]);
+            $links = array_merge($links, $link[1]);
+
+            foreach($descs as $key=>$desc)
+            {
+                $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
+                if(!$desc_result){
+                    unset($descs[$key]);
+                    unset($links[$key]);//плохой контент - выбрасываем ссылку
+                }
+                else $descs[$key] = $desc_result;
             }
-            else $descs[$key] = $desc_result;
+
+            $this->page++;//переходим на след страницу
+            $tries++;
         }
-        return [$links, $descs];
+
+        sort($links);
+        sort($descs);
+
+        foreach($descs as $key => $desc){
+            if($key === $this->results_count) break;
+            $result[$links[$key]] = $desc;
+        }
+
+        return $result;
     }
 
     protected function validate($content)//проводим валидацию контента и удаляем всё лишнее

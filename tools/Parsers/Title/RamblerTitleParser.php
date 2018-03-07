@@ -10,7 +10,7 @@ final class RamblerTitleParser extends TitleParser implements ParserInterface//Ð
 
     const TITLE_REGEX = '/<h2 class="b-serp-item__title">(.+?)<\/h2>/is';
 
-    protected function compareUrl($keyword, $page)
+    protected function compareUrl(string $keyword, int $page): string
     {
         return 'https://nova.rambler.ru/search?scroll=1&utm_source=nhp&utm_content=search&utm_medium=button&utm_campaign=self_promo&query='.$keyword.'&page='.$page;
     }

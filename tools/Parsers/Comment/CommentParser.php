@@ -25,7 +25,6 @@ class CommentParser extends Parser
 
     public function get_links()//получаем ссылки для парса
     {
-        $keyword = urlencode($this->keyword);
         $url = $this->compareUrl($this->keyword, $this->page);
         $data = $this->request($url);
 
@@ -60,6 +59,8 @@ class CommentParser extends Parser
                 }
             }
         }
+
+        $result = $this->result_validate($result);
         return $result;
     }
 
@@ -102,5 +103,14 @@ class CommentParser extends Parser
         }
 
         return $links;
+    }
+
+    protected function result_validate($text)
+    {
+        $text = preg_replace('/(\.){2}/', '.', $text);
+        $text = preg_replace('/^(\W)/', '', $text);
+        $text = trim($text);
+
+        return $text;
     }
 }

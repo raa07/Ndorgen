@@ -12,8 +12,9 @@ final class RamblerContentParser extends ContentParser implements ParserInterfac
     const LINK_REGEX = '/<a target="_blank" tabindex="2" class="b-serp-item__link" href="(.+?)"/is';
 
 
-    protected function compareUrl($keyword, $page)
+    protected function compareUrl(string $keyword, int $page): string
     {
+        $keyword = urlencode($keyword);
         $url = 'https://nova.rambler.ru/search?scroll=1&utm_source=nhp&utm_content=search&utm_medium=button&utm_campaign=self_promo&query='.$keyword.'&page='.$page;
         return $url;
     }
