@@ -2,4 +2,4 @@
 use Tools\Router;
 
 Router::add('/', 'MainController', 'index');
-Router::add('/post', 'MainController', 'post');
+Router::add('/post', 'PostsController', 'post');

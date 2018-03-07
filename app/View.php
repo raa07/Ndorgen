@@ -17,8 +17,9 @@ class View
         if (file_exists($path)) {
             extract($vars);
             require ($path);
+            return true;
         }
         else if($name === '404') die('error');
-        else View::result('404');
+        else return View::result('404');
     }
 }

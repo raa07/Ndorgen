@@ -26,15 +26,4 @@ class MainController
 
         return View::result('template1/index', ['posts' => $posts]);
     }
-
-    public function post()
-    {
-        if(!isset($_REQUEST['id'])) return View::result('template1/404');
-        $id = $_REQUEST['id'];
-        $post =  new Posts;
-        $post = $post->getPost($id);
-
-        if(!empty($post)) return View::result('template1/post', ['post' => $post]);
-        else return View::result('template1/404');
-    }
 }
