@@ -21,8 +21,8 @@ class MainController
 //        $test2 = new RamblerContentParser;
 //        var_dump($test2->run('test test', 20, 1));
 
-//        $test3 = new RamblerCommentParser;
-//        var_dump($test3->run('machine learning', 10, 1));
+        $test3 = new RamblerCommentParser;
+        var_dump($test3->run('machine learning', 2, 1));
 
         return View::result('template1/index', ['posts' => $posts]);
     }

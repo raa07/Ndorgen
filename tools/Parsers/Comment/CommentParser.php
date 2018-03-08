@@ -16,9 +16,24 @@ class CommentParser extends Parser
         $this->results_count = $result_count;
         $this->page = $page;
 
-        $links = $this->get_links();
+        $result = $this->parse();
 
-        $result = $this->parse_comments($links, 10);
+        return $result;
+    }
+
+    protected function parse()
+    {
+        $result = [];
+        $tries = 0;
+
+        while(count($result) < $this->results_count && $tries !== 5)
+        {
+            $links = $this->get_links();
+            $last_count = count($result);
+            $result[] = $this->parse_comments($links, 10);
+            if(count($result) === $last_count) $tries++;
+            $this->page++;
+        }
 
         return $result;
     }

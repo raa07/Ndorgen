@@ -4,8 +4,5 @@ namespace Tools\Generators;
 
 interface  GeneratorInterface
 {
-    public static function runAllGenerators();
-    public static function runPostsGenerator();
-    public static function runCommentsGenerator();
-    public static function runUsersGenerator();
+    public function generateElements($result_count, $length);
 }
