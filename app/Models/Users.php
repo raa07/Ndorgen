@@ -7,12 +7,17 @@ use App\Model;
 class Users extends Model
 {
 
-    public static function getAuthor():array
+//    public static function getAuthor():array
+//    {
+//        return [
+//            'id' => 10,
+//            'n' => 'name author',
+//            'a' => 'avatar'
+//        ];
+//    }
+
+    public function getAuthor()
     {
-        return [
-            'id' => 10,
-            'n' => 'name author',
-            'a' => 'avatar'
-        ];
+        //TODO: сделать получение неиспользуемого автора
     }
 }

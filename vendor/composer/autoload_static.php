@@ -32,6 +32,10 @@ class ComposerStaticInit26d82a6c4e376172becbaab254866fe4
         array (
             'MongoDB\\' => 8,
         ),
+        'D' => 
+        array (
+            'Demons\\' => 7,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -67,6 +71,10 @@ class ComposerStaticInit26d82a6c4e376172becbaab254866fe4
         'MongoDB\\' => 
         array (
             0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
+        ),
+        'Demons\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/demons',
         ),
         'App\\' => 
         array (

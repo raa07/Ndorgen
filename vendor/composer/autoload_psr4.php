@@ -13,5 +13,6 @@ return array(
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'MongoDB\\' => array($vendorDir . '/mongodb/mongodb/src'),
+    'Demons\\' => array($baseDir . '/demons'),
     'App\\' => array($baseDir . '/app'),
 );

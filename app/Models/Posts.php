@@ -42,6 +42,12 @@ class Posts extends Model
         return empty($post) ? [] : $post;
     }
 
+    public function getNotUpdated():string
+    {
+        //TODO: сделать получение последнего не обновлённого поста
+        return 'id';
+    }
+
     public static function generateLink(string $title):string
     {
         $link = self::transcriptLink($title);
