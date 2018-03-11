@@ -4,7 +4,7 @@ namespace App;
 
 abstract class Model
 {
-    private $collection_name;
+    protected $collection_name;
     public $collection;
 
     function __construct()
