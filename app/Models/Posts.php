@@ -11,10 +11,11 @@ class Posts extends Model
     public function createPost(string $title,
     string $text,
     int $category_id,
-    int $keyword_id):bool
+    string $category_name,
+    int $keyword_id,
+    object $author):bool
     {
 
-        $author = Users::getAuthor();
         $link = self::generateLink($title);
         $date = date("F j, Y");
 
@@ -23,6 +24,7 @@ class Posts extends Model
             'tx' => $text,
             'lk' => $link,
             'cid' => $category_id,
+            'cn' => $category_name,
             'kid' => $keyword_id,
             'd' => $date,
             'cc' => 0,

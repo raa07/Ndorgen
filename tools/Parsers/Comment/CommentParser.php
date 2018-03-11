@@ -3,12 +3,14 @@ namespace Tools\Parsers\Comment;
 
 use Tools\Parsers\Parser;
 
-class CommentParser extends Parser
+abstract class CommentParser extends Parser
 {
 
     private $results_count;
     private $page;
     private $keyword;
+
+    abstract protected function compareUrl(string $keyword, int $page): string;
 
     public function run($keyword, $result_count, $page=1)
     {

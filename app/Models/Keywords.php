@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Model;
+use \MongoDB\BSON\ObjectID;
 
 class Keywords extends Model
 {
@@ -30,8 +31,16 @@ class Keywords extends Model
         $options = ['sort' => ['pc' => 1]];
 
         $keyword = $this->collection->findOne($filter, $options);
-        $keyword = isset($keyword['_id']) ?: [];
+        $keyword = isset($keyword['_id']) ? $keyword : [];
 
         return $keyword;
+    }
+
+    public function addPost(ObjectID $id)
+    {
+        $this->collection->updateOne(
+            ['_id' => $id],
+            ['$inc' => ['pc' => 1]]
+        );
     }
 }

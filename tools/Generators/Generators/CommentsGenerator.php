@@ -7,7 +7,7 @@ use Tools\Generators\GeneratorInterface;
 
 class CommentsGenerator extends Generator implements GeneratorInterface
 {
-    public function generateElements($result_count, $length)
+    public function generateElements($result_count, $length):array
     {
         // TODO: Implement generateElement() method.
     }
@@ -17,13 +17,4 @@ class CommentsGenerator extends Generator implements GeneratorInterface
         // TODO: Implement generateElement() method.
     }
 
-    protected function errorLoging($error)
-    {
-        // TODO: Implement errorLoging() method.
-    }
-
-    protected function selectRelatedElement()
-    {
-        // TODO: Implement selectRelatedElement() method.
-    }
 }

@@ -5,11 +5,13 @@ namespace Tools\Parsers\Title;
 use Tools\Parsers\Parser;
 
 //парсер тайтлов
-class TitleParser extends Parser
+abstract class TitleParser extends Parser
 {
     private $results_count;
     private $page;
     private $keyword;
+
+    abstract protected function compareUrl(string $keyword, int $page);
 
     public function run($keyword, $result_count, $page=1)//отдаём результат парса через эту функцию
     {
@@ -64,4 +66,5 @@ class TitleParser extends Parser
         }
         return $result;
     }
+
 }

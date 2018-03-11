@@ -2,28 +2,41 @@
 
 namespace Tools\Generators\Generators;
 
+use App\Models\Keywords;
+use App\Models\Posts;
 use Tools\Generators\Generator;
 use Tools\Generators\GeneratorInterface;
 
 class PostsGenerator extends Generator implements GeneratorInterface
 {
-    public function generateElements($result_count, $length)
+    public function generateElements($result_count, $length):array
     {
-        // TODO: Implement generateElement() method.
+        $result = [];
+
+        for($i=0; $i < $result_count; $i++)
+        {
+            $result[] = $this->generateElement($length);
+        }
+
+        return $result;
     }
 
-    protected function generateElement($length)
+    protected function generateElement($length):bool
     {
-        // TODO: Implement generateElement() method.
-    }
+        $keyword = new Keywords();
+        $keyword = ['cid' => 1, 'id' => 1];///////
+        $category_id = $keyword['cid'];
+        $category_name = $keyword['cn'];
+        $keyword_id = $keyword['_id'];
 
-    protected function errorLoging($error)
-    {
-        // TODO: Implement errorLoging() method.
-    }
+        $title = 'title';//////////////
+        $text = 'text'; ///////////////
+        $author = new stdClass();///////////
+        $post = new Posts;
+        $result = $post->createPost($title, $text, $category_id, $category_name,  $keyword_id, $author);
 
-    protected function selectRelatedElement()
-    {
-        // TODO: Implement selectRelatedElement() method.
+        if($result) $keyword->addPost($keyword_id);
+
+        return (bool)$result;
     }
 }

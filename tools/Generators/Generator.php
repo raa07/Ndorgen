@@ -5,6 +5,8 @@ namespace Tools\Generators;
 abstract class Generator
 {
     abstract protected function generateElement($length);
-    abstract protected function errorLoging($error);
-    abstract protected function selectRelatedElement();
+    protected function errorLoging($error)
+    {
+        die($error);//TODO: реализовать логинг нормальный
+    }
 }
