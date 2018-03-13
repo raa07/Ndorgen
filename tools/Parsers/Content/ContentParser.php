@@ -12,7 +12,7 @@ abstract class ContentParser extends Parser
 
     abstract protected function compareUrl(string $keyword, int $page): string;
 
-    public function run($keyword, $result_count, $page=1)
+    public function run($keyword, $result_count, $page=0)
     {
         $this->keyword = $keyword;
         $this->results_count = $result_count;
@@ -26,37 +26,29 @@ abstract class ContentParser extends Parser
     protected function parse()//получаем ссылки и дискрипшены по ключевику на page странице
     {
         $descs = [];
-
         $links = [];
         $tries = 0;
+        $result = [];
 
         while(count($links) < $this->results_count && $tries <5)//пока не получим нужное кличество контента или пока не накапает 5 попыток
         {
             $url = $this->compareUrl($this->keyword, $this->page);
             $data = $this->request($url);
 
-            preg_match_all(static::DESC_REGEX, $data, $desc);//получаем дискрипшенны
-            preg_match_all(static::LINK_REGEX, $data, $link);//получаем ссылки
-
-            $descs = array_merge($descs, $desc[0]);
-            $links = array_merge($links, $link[1]);
-
-            foreach($descs as $key=>$desc)
+            foreach($data as $entity)
             {
-                $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
-                if(!$desc_result){
-                    unset($descs[$key]);
-                    unset($links[$key]);//плохой контент - выбрасываем ссылку
+                $desc_result = $this->validate($entity['snippet']);//проводим валидацию дискрипшена
+
+                if($desc_result) {
+                    $descs[] = $desc_result;
+                    $links[] = $entity['url'];
                 }
-                else $descs[$key] = $desc_result;
             }
 
             $this->page++;//переходим на след страницу
             $tries++;
         }
 
-        sort($links);
-        sort($descs);
 
         foreach($descs as $key => $desc){
             if($key === $this->results_count) break;

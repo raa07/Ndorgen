@@ -4,9 +4,9 @@
 use App\View;
 use App\Models\Posts;
 
-use Tools\Parsers\Title\RamblerTitleParser;
-use Tools\Parsers\Content\RamblerContentParser;
-use Tools\Parsers\Comment\RamblerCommentParser;
+use Tools\Parsers\Title\BingTitleParser;
+use Tools\Parsers\Content\BingContentParser;
+use Tools\Parsers\Comment\BingCommentParser;
 
 class MainController
 {
@@ -23,21 +23,23 @@ class MainController
     public function test()
     {
 
-//        $test = new RamblerTitleParser;
-//        var_dump($test->run('кросовки', 31, 1));
+//        $test = new BingTitleParser;
+//        var_dump($test->run('кросовки', 31, 0));
 //
-//        $test2 = new RamblerContentParser;
-//        var_dump($test2->run('test test', 20, 1));
+//        $test2 = new BingContentParser;
+//        var_dump($test2->run('кроссовки', 20, 0));
 
-//        $test3 = new RamblerCommentParser;
-//        var_dump($test3->run('machine learning', 2, 1));
+//        $test3 = new BingCommentParser;
+//        var_dump($test3->run('кроссовки', 2, 0));
 
-        $keyword = new \App\Models\Keywords();
-//        //$keyword->createKeyword('test keyword', '0', 'test category');
-        $unusedKeyword = $keyword->getUnused();
-        $keyword->addPost($unusedKeyword['_id']);
+//        $keyword = new \App\Models\Keywords();
+//        $keyword->createKeyword('test keyword', '0', 'test category');
+//        $unusedKeyword = $keyword->getUnused();
+//        $keyword->addPost($unusedKeyword['_id']);
 //        var_dump($unusedKeyword);
 
+        $generator = new \Tools\Generators\Generators\PostsGenerator();
+        $generator->generateElements(2);
 
 
 //        $url = 'https://api.vk.com/method/users.get.json?v=5.52&lang=ru&user_ids=58805346&name_case=nom&fields=city,country,status,photo_100';

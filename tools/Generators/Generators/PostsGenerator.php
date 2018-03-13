@@ -6,36 +6,55 @@ use App\Models\Keywords;
 use App\Models\Posts;
 use Tools\Generators\Generator;
 use Tools\Generators\GeneratorInterface;
+use Tools\Parsers\Content\BingContentParser;
+use Tools\Parsers\Title\BingTitleParser;
 
 class PostsGenerator extends Generator implements GeneratorInterface
 {
-    public function generateElements($result_count, $length):array
+    public function generateElements($result_count):array
     {
         $result = [];
 
         for($i=0; $i < $result_count; $i++)
         {
-            $result[] = $this->generateElement($length);
+            $result[] = $this->generateElement();
         }
 
         return $result;
     }
 
-    protected function generateElement($length):bool
+    protected function generateElement():bool
     {
-        $keyword = new Keywords();
-        $keyword = ['cid' => 1, 'id' => 1];///////
+        $result = false;
+
+        $keyword_model = new Keywords();
+        $keyword = $keyword_model->getUnused();///////
         $category_id = $keyword['cid'];
-        $category_name = $keyword['cn'];
+        $category_name = $keyword['cti'];
         $keyword_id = $keyword['_id'];
+        $keyword_name = $keyword['ti'];
 
-        $title = 'title';//////////////
-        $text = 'text'; ///////////////
-        $author = new stdClass();///////////
+        $title_parser = new BingTitleParser();
+        $title_parser = $title_parser->run($keyword_name, 1);
+        $title = $title_parser[0];
+        $title = empty($title) ? 'error' : $title;
+
+
+        $content_parser = new BingContentParser();
+        $content_parser = $content_parser->run($keyword_name, 1);
+        $content = reset($content_parser);
+        $content = empty($content) ? 'error' : $content;
+
+        $author = [
+            'id' => 'asdfasdf',
+            'n' => 'test account',
+            'a' => 'test avatar'
+        ];
+
         $post = new Posts;
-        $result = $post->createPost($title, $text, $category_id, $category_name,  $keyword_id, $author);
+        $result = $post->createPost($title, $content, $category_id, $category_name, (string)$keyword_id, $author);
 
-        if($result) $keyword->addPost($keyword_id);
+        if($result) $keyword_model->addPost($keyword_id);
 
         return (bool)$result;
     }

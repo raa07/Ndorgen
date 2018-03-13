@@ -13,7 +13,7 @@ class Posts extends Model
     int $category_id,
     string $category_name,
     int $keyword_id,
-    object $author):bool
+    array $author):bool
     {
 
         $link = self::generateLink($title);

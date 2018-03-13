@@ -4,9 +4,9 @@
 use App\View;
 use App\Models\Posts;
 
-use Tools\Parsers\Title\RamblerTitleParser;
-use Tools\Parsers\Content\RamblerContentParser;
-use Tools\Parsers\Comment\RamblerCommentParser;
+use Tools\Parsers\Title\BingTitleParser;
+use Tools\Parsers\Content\BingContentParser;
+use Tools\Parsers\Comment\BingCommentParser;
 
 class PostsController
 {

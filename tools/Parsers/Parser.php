@@ -4,19 +4,36 @@ namespace Tools\Parsers;
 
 abstract class Parser
 {
+    const API_KEY = '42f2fa2b199943008675f3ac7a6b67b8';
+    const PAGE_COUNT = 10;
+
     protected function request($url)//запрос к поисковику
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
-        curl_setopt($ch, CURLOPT_USERAGENT, static::USER_AGENT);
-        curl_setopt($ch, CURLOPT_FTP_SSL, CURLFTPSSL_TRY);
 
-        $result = curl_exec($ch);
+        $accountKey = static::API_KEY;
+        
+        $opts = [
+            'http'=>[
+                'method'=>"GET",
+                'header'=>'Ocp-Apim-Subscription-Key: '.$accountKey
+            ]
+        ];
+        $context = stream_context_create($opts);
 
-        return $result;
+        $file = file_get_contents($url, false, $context);
+
+        $page = json_decode($file, true);
+
+        $result = [];
+
+        if(isset($page['webPages']))
+        {
+            if(isset($page['webPages']['value'])){
+                $result = $page['webPages']['value'];
+            }
+        }
+
+       return $result;
     }
 
     abstract protected function validate($text);

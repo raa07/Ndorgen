@@ -12,7 +12,7 @@ abstract class CommentParser extends Parser
 
     abstract protected function compareUrl(string $keyword, int $page): string;
 
-    public function run($keyword, $result_count, $page=1)
+    public function run($keyword, $result_count, $page=0)
     {
         $this->keyword = $keyword;
         $this->results_count = $result_count;
@@ -45,11 +45,14 @@ abstract class CommentParser extends Parser
         $url = $this->compareUrl($this->keyword, $this->page);
         $data = $this->request($url);
 
-
-        preg_match_all(static::LINK_REGEX, $data,$matches_url);//вытаскиваем ссылки из страницы
-        $links = $matches_url[1];
+        $links = [];
+        foreach ($data as $entity)
+        {
+            $links[] = $entity['url'];
+        }
 
         $links = $this->validate_links($links);
+
 
         return $links;
     }
@@ -62,7 +65,7 @@ abstract class CommentParser extends Parser
         foreach ($links as $link) {
             if(strlen($result) >= $length) break;
 
-            $out = $this->request($link);
+            $out = $this->request_page($link);
             $out = $this->validate_tags($out);
             preg_match_all('!\<p\>(.*?)\</p\>!siu', $out, $lines);//получаем весь текст в <p>
             foreach ($lines[1] as $p) //построчечно удаляем лишние символы и номера/ссылки
@@ -120,6 +123,11 @@ abstract class CommentParser extends Parser
         }
 
         return $links;
+    }
+
+    protected function request_page($url)
+    {
+        return file_get_contents($url);
     }
 
     protected function result_validate($text)

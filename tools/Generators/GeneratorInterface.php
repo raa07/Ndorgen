@@ -4,5 +4,5 @@ namespace Tools\Generators;
 
 interface  GeneratorInterface
 {
-    public function generateElements($result_count, $length): array;
+    public function generateElements($result_count): array;
 }
