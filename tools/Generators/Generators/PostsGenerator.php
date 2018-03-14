@@ -4,6 +4,7 @@ namespace Tools\Generators\Generators;
 
 use App\Models\Keywords;
 use App\Models\Posts;
+use App\Models\Users;
 use Tools\Generators\Generator;
 use Tools\Generators\GeneratorInterface;
 use Tools\Parsers\Content\BingContentParser;
@@ -45,16 +46,19 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $content = reset($content_parser);
         $content = empty($content) ? 'error' : $content;
 
-        $author = [
-            'id' => 'asdfasdf',
-            'n' => 'test account',
-            'a' => 'test avatar'
-        ];
+        $author_model = new Users;
+        $author = $author_model->getUnused();
+        $author = iterator_to_array($author);
+        $author_id = $author['_id'];
+        unset($author['_id']);
 
         $post = new Posts;
         $result = $post->createPost($title, $content, $category_id, $category_name, (string)$keyword_id, $author);
 
-        if($result) $keyword_model->addPost($keyword_id);
+        if($result) {
+            $keyword_model->addPost($keyword_id);
+            $author_model->addPost($author_id);
+        }
 
         return (bool)$result;
     }

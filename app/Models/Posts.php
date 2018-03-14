@@ -12,7 +12,7 @@ class Posts extends Model
     string $text,
     int $category_id,
     string $category_name,
-    int $keyword_id,
+    string $keyword_id,
     array $author):bool
     {
 

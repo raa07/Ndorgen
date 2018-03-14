@@ -32,30 +32,22 @@ class MainController
 //        $test3 = new BingCommentParser;
 //        var_dump($test3->run('кроссовки', 2, 0));
 
+//        $test4 = new \Tools\Parsers\User\VkUserParser();
+//        var_dump($test4->run(6));
+
 //        $keyword = new \App\Models\Keywords();
 //        $keyword->createKeyword('test keyword', '0', 'test category');
 //        $unusedKeyword = $keyword->getUnused();
 //        $keyword->addPost($unusedKeyword['_id']);
 //        var_dump($unusedKeyword);
 
-        $generator = new \Tools\Generators\Generators\PostsGenerator();
-        $generator->generateElements(2);
+//        $user = new \App\Models\Users();
+//        $user->createUser('тестовый аккаунт'.rand(10, 1000));
+//        $unusedUser = $user->getUnused();
+//        $user->addPost($unusedUser['_id']);
+//        var_dump($unusedUser);
 
-
-//        $url = 'https://api.vk.com/method/users.get.json?v=5.52&lang=ru&user_ids=58805346&name_case=nom&fields=city,country,status,photo_100';
-//        $proxy = '139.255.57.32:8080';
-////        $proxyauth = 'user:password';
-//
-//        $ch = curl_init();
-//        curl_setopt($ch, CURLOPT_URL, $url);         // URL for CURL call
-//        curl_setopt($ch, CURLOPT_PROXY, $proxy);     // PROXY details with port
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  // Do not outputting it out directly on screen.
-//        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-//        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 6);
-//
-//        $curl_scraped_page = curl_exec($ch);
-//        curl_close($ch);
-//
-//        echo $curl_scraped_page;
+//        $generator = new \Tools\Generators\Generators\PostsGenerator();
+//        $generator->generateElements(2);
     }
 }
