@@ -7,13 +7,14 @@ use \MongoDB\BSON\ObjectID;
 
 class Users extends Model
 {
-    public function createUser(string $name):bool
+    public function createUser(string $name, string $avatar):bool
     {
         $date = date("F j, Y");
         $user = [
             'n' => $name,
             'pc' => 0,
             'd' => $date,
+            'a' => $avatar,
             'r' => 0
         ];
         $result = $this->insert($user);

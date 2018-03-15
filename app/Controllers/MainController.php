@@ -29,7 +29,7 @@ class MainController
 //        var_dump($test3->run('кроссовки', 5, 50));
 
 //        $test4 = new \Tools\Parsers\User\VkUserParser();
-//        var_dump($test4->run(6));
+//        var_dump($test4->run(40));
 
 //        $keyword = new \App\Models\Keywords();
 //        $keyword->createKeyword('test keyword', '0', 'test category');
@@ -43,7 +43,10 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 
-        $generator = new \Tools\Generators\Generators\PostsGenerator();
-        $generator->generateElements(2);
+//        $generator = new \Tools\Generators\Generators\PostsGenerator();
+//        $generator->generateElements(2);//
+
+//        $generator = new \Tools\Generators\Generators\UsersGenerator();
+//        $generator->generateElements(5);
     }
 }
