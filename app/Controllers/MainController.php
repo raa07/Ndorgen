@@ -4,10 +4,6 @@
 use App\View;
 use App\Models\Posts;
 
-use Tools\Parsers\Title\BingTitleParser;
-use Tools\Parsers\Content\BingContentParser;
-use Tools\Parsers\Comment\BingCommentParser;
-
 class MainController
 {
     public function index()
@@ -23,14 +19,14 @@ class MainController
     public function test()
     {
 
-//        $test = new BingTitleParser;
-//        var_dump($test->run('кросовки', 31, 0));
+//        $test = new Tools\Parsers\Title\BingTitleParser;
+//        var_dump($test->run('кросовки', 31, 300));
 //
-//        $test2 = new BingContentParser;
-//        var_dump($test2->run('кроссовки', 20, 0));
+//        $test2 = new Tools\Parsers\Content\BingContentParser;
+//        var_dump($test2->run('кроссовки', 11, 300));
 
-//        $test3 = new BingCommentParser;
-//        var_dump($test3->run('кроссовки', 2, 0));
+//        $test3 = new Tools\Parsers\Comment\BingCommentParser;
+//        var_dump($test3->run('кроссовки', 5, 50));
 
 //        $test4 = new \Tools\Parsers\User\VkUserParser();
 //        var_dump($test4->run(6));
@@ -47,7 +43,7 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 
-//        $generator = new \Tools\Generators\Generators\PostsGenerator();
-//        $generator->generateElements(2);
+        $generator = new \Tools\Generators\Generators\PostsGenerator();
+        $generator->generateElements(2);
     }
 }

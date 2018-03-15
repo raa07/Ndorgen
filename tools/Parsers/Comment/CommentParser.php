@@ -5,18 +5,19 @@ use Tools\Parsers\Parser;
 
 abstract class CommentParser extends Parser
 {
-
     private $results_count;
     private $page;
     private $keyword;
+    private $length;
 
     abstract protected function compareUrl(string $keyword, int $page): string;
 
-    public function run($keyword, $result_count, $page=0)
+    public function run($keyword, $result_count, $length, $page=0)
     {
         $this->keyword = $keyword;
         $this->results_count = $result_count;
         $this->page = $page;
+        $this->length = $length;
 
         $result = $this->parse();
 
@@ -32,7 +33,7 @@ abstract class CommentParser extends Parser
         {
             $links = $this->get_links();
             $last_count = count($result);
-            $result[] = $this->parse_comments($links, 10);
+            $result[] = $this->parse_comments($links);
             if(count($result) === $last_count) $tries++;
             $this->page++;
         }
@@ -58,12 +59,12 @@ abstract class CommentParser extends Parser
     }
 
 
-    public function parse_comments($links, $length)//парсим конкретные ссылки
+    public function parse_comments($links)//парсим конкретные ссылки
     {
         $result = '';
 
         foreach ($links as $link) {
-            if(strlen($result) >= $length) break;
+            if(strlen($result) >= $this->length) break;
 
             $out = $this->request_page($link);
             $out = $this->validate_tags($out);

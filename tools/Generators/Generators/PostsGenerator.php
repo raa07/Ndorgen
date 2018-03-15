@@ -26,8 +26,6 @@ class PostsGenerator extends Generator implements GeneratorInterface
 
     protected function generateElement():bool
     {
-        $result = false;
-
         $keyword_model = new Keywords();
         $keyword = $keyword_model->getUnused();///////
         $category_id = $keyword['cid'];
@@ -36,13 +34,13 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $keyword_name = $keyword['ti'];
 
         $title_parser = new BingTitleParser();
-        $title_parser = $title_parser->run($keyword_name, 1);
+        $title_parser = $title_parser->run($keyword_name, 1, 300);
         $title = $title_parser[0];
         $title = empty($title) ? 'error' : $title;
 
 
         $content_parser = new BingContentParser();
-        $content_parser = $content_parser->run($keyword_name, 1);
+        $content_parser = $content_parser->run($keyword_name, 1, 800);
         $content = reset($content_parser);
         $content = empty($content) ? 'error' : $content;
 

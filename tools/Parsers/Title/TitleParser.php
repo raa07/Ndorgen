@@ -1,23 +1,23 @@
 <?php
-
 namespace Tools\Parsers\Title;
 
 use Tools\Parsers\Parser;
-
 //парсер тайтлов
 abstract class TitleParser extends Parser
 {
     private $results_count;
     private $page;
     private $keyword;
+    private $length;
 
     abstract protected function compareUrl(string $keyword, int $page);
 
-    public function run($keyword, $result_count, $page=0)//отдаём результат парса через эту функцию
+    public function run($keyword, $result_count, $length, $page=0)//отдаём результат парса через эту функцию
     {
         $this->results_count = $result_count;
         $this->page = $page;
         $this->keyword = $keyword;
+        $this->length = $length;
 
         $titles = $this->parse();//парсим тайтлы
 
@@ -29,20 +29,36 @@ abstract class TitleParser extends Parser
     {
         $result = [];
         $tries = 0;
-        while(count($result) < $this->results_count && $tries <5)//пока не получим нужное кличество тайтлов или пока не накапает 5 попыток
+        $parse_tries = 0;
+
+        while(count($result) < $this->results_count && $parse_tries <5)//пока не получим нужное кличество тайтлов или пока не накапает 5 попыток
         {
-            $url = $this->compareUrl($this->keyword, $this->page);
-            $data = $this->request($url);//делаем запрос к поисковику
-            $new_result = [];
-            foreach ($data as $entity) {
-                $title = $entity['name'];
-                $title = $this->validate($title);
-                if($title) $new_result[] = $title;
+            $new_title = '';
+
+            while(strlen($new_title) < $this->length && $tries < 5) {
+                $url = $this->compareUrl($this->keyword, $this->page);
+                $data = $this->request($url);//делаем запрос к поисковику
+
+                foreach ($data as $entity) {
+                    $title = $entity['name'];
+                    $title = $this->validate($title);
+                    $title = trim($title);
+                    if($title){
+                        if(strlen($new_title) >= $this->length) break 1;
+                        $new_title .= '-' . $title;
+                    }
+                }
+                $tries++;
             }
 
-            $result = array_merge($result, $new_result);//сливаем результирующие массивы
-            $this->page++;//переходим на след страницу
-            $tries++;
+            if(strlen($new_title) >= $this->length) {
+                $result[] = substr($new_title, 1);
+            } else {
+                $parse_tries++;
+            }
+
+            $tries = 0;
+            $this->page++;
         }
         return $result;
     }

@@ -7,7 +7,7 @@ use Tools\Generators\GeneratorInterface;
 
 class UsersGenerator extends Generator implements GeneratorInterface
 {
-    public function generateElements($result_count, $length):array
+    public function generateElements($result_count):array
     {
         // TODO: Implement generateElement() method.
     }
