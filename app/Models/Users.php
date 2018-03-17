@@ -15,7 +15,8 @@ class Users extends Model
             'pc' => 0,
             'd' => $date,
             'a' => $avatar,
-            'r' => 0
+            'r' => 0,
+            'cc' => 0
         ];
         $result = $this->insert($user);
 
@@ -33,11 +34,30 @@ class Users extends Model
         return $author;
     }
 
+    public function getLazy()
+    {
+        $filter  = [];
+        $options = ['sort' => ['cc' => 1]];
+
+        $author = $this->collection->findOne($filter, $options);
+        $author = isset($author['_id']) ? $author : [];
+
+        return $author;
+    }
+
     public function addPost(ObjectID $id)
     {
         $this->collection->updateOne(
             ['_id' => $id],
             ['$inc' => ['pc' => 1]]
+        );
+    }
+
+    public function addComment(ObjectID $id)
+    {
+        $this->collection->updateOne(
+            ['_id' => $id],
+            ['$inc' => ['cc' => 1]]
         );
     }
 }

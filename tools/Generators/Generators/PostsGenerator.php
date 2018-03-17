@@ -48,10 +48,10 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $author = $author_model->getUnused();
         $author = iterator_to_array($author);
         $author_id = $author['_id'];
-        unset($author['_id']);
+        $author['_id'] = (string)$author['_id'];
 
         $post = new Posts;
-        $result = $post->createPost($title, $content, $category_id, $category_name, (string)$keyword_id, $author);
+        $result = $post->createPost($title, $content, $category_id, $category_name, (string)$keyword_id, $keyword_name, $author);
 
         if($result) {
             $keyword_model->addPost($keyword_id);

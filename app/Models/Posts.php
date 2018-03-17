@@ -13,6 +13,7 @@ class Posts extends Model
     int $category_id,
     string $category_name,
     string $keyword_id,
+    string $keyword_name,
     array $author):bool
     {
 
@@ -26,6 +27,7 @@ class Posts extends Model
             'cid' => $category_id,
             'cn' => $category_name,
             'kid' => $keyword_id,
+            'kn' => $keyword_name,
             'd' => $date,
             'cc' => 0,
             'a' => $author
@@ -44,10 +46,23 @@ class Posts extends Model
         return empty($post) ? [] : $post;
     }
 
-    public function getNotUpdated():string
+    public function getNotUpdated()
     {
-        //TODO: сделать получение последнего не обновлённого поста
-        return 'id';
+        $filter  = [];
+        $options = ['sort' => ['cc' => 1]];
+
+        $post = $this->collection->findOne($filter, $options);
+        $post = isset($post['_id']) ? $post : [];
+
+        return $post;
+    }
+
+    public function addComment($id)
+    {
+        $this->collection->updateOne(
+            ['_id' => $id],
+            ['$inc' => ['cc' => 1]]
+        );
     }
 
     public static function generateLink(string $title):string
