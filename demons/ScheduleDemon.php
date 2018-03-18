@@ -2,28 +2,33 @@
 
 namespace Demons;
 
-use App\Models\Tasks;
+use App\GlobalModels\Tasks;
 
 class ScheduleDemon extends Demon
 {
-    public function createTask(array $time_intervals, array $count_intervals, int $type) : bool
+    public function createTask(array $count_intervals, int $type, string $dorgen) : bool
     {
         $tasks = new Tasks;
 
-        if($type === Tasks::TYPE_POST) {
-            return $tasks->createPostTask();
-        }else if($type === Tasks::TYPE_USER) {
-            return $tasks->createUserTask();
-        }else if($type === Tasks::TYPE_COMMENT) {
-            return $tasks->createCommentTask();
-        }else return false;
+        $result = $tasks->createTask($type, $count_intervals, $dorgen);
+
+        return $result;
     }
-
-
 
     public function run()
     {
-
+        $dorgens = [];
+        foreach($dorgens as $dorgen) {
+            if($dorgen->needPosts()) {
+                $this->createTask([], Tasks::TYPE_POST, $dorgen->getName());
+            }
+            if($dorgen->needUsers()) {
+                $this->createTask([], Tasks::TYPE_USER, $dorgen->getName());
+            }
+            if($dorgen->needComment()) {
+                $this->createTask([], Tasks::TYPE_USER, $dorgen->getName());
+            }
+        }
     }
 
     public function stop()

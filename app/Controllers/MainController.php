@@ -43,8 +43,8 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 
-//        $generator = new \Tools\Generators\Generators\PostsGenerator();
-//        $generator->generateElements(5);//
+        $generator = new \Tools\Generators\Generators\PostsGenerator();
+        $generator->generateElements(10);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        $generator->generateElements(5);

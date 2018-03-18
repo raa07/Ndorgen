@@ -8,6 +8,7 @@ use Tools\Router;
 class Dorgen
 {
     private static $instance = null;
+    private static $domain;
 
     private function __construct(){}
     private function __clone(){}
@@ -22,12 +23,18 @@ class Dorgen
 
     public static function init()
     {
+        self::setDomain($_SERVER['SERVER_NAME']);
         return Router::init();
     }
 
     public static function getDomain()
     {
-        return $_SERVER['SERVER_NAME'];
+        return self::$domain;
+    }
+
+    public static function setDomain($domain)
+    {
+        self::$domain = $domain;
     }
 
 

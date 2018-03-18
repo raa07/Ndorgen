@@ -12,13 +12,13 @@ use Tools\Parsers\Comment\BingCommentParser;
 
 class CommentsGenerator extends Generator implements GeneratorInterface
 {
-    public function generateElements($result_count, $length, $comments_for_post):array
+    public function generateElements($result_count, $comments_for_post):array
     {
         $result = [];
 
         for($i=0; $i < $result_count; $i++)
         {
-            $result[] = $this->generateElement($length, $comments_for_post);
+            $result[] = $this->generateElement(100, $comments_for_post);/////////////////////////////////
         }
 
         return $result;
