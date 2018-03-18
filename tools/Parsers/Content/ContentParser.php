@@ -36,7 +36,7 @@ abstract class ContentParser extends Parser
         {
             $new_desc='';
 
-            while(strlen($new_desc) < $this->length && $tries < 5) {
+            while(mb_strlen($new_desc) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword, $this->page);
                 $data = $this->request($url);
 
@@ -44,14 +44,14 @@ abstract class ContentParser extends Parser
                     $desc_result = $this->validate($entity['snippet']);//проводим валидацию дискрипшена
 
                     if($desc_result) {
-                        if(strlen($new_desc) >= $this->length) break 1;
+                        if(mb_strlen($new_desc) >= $this->length) break 1;
                         $new_desc .= '.' . $desc_result;
                         $links[] = $entity['url'];
                     }
                 }
                 $tries++;
             }
-            if(strlen($new_desc) >= $this->length) {
+            if(mb_strlen($new_desc) >= $this->length) {
                 $result[] = substr($new_desc, 1);
             } else {
                 $parse_tries++;
@@ -73,9 +73,14 @@ abstract class ContentParser extends Parser
         $content = preg_replace('/(\…)/', '', $content);
         $content = preg_replace('/(\.){2,}/', '', $content);
         $content = preg_replace('/[a-zA-Z\-\.0-9]*(href|url|http|www|\.ru|\.com|\.net|\.info|\.org|\.ua)/i', '', $content);
+        $content = preg_replace('/^([\.,])/', '', $content);
+        $content = preg_replace('/(\s.)$/u', '', $content);
         $content = trim($content);
         if(!preg_match('/([а-яА-Я])/u', $content)) $result = false;//если нету русских букв
         if(!preg_match('/( )/u', $content)) $result = false;
+        if(substr_count($content, ' ') <= 2) return false;
+
+
         if(!isset($result)) $result = ucfirst($content);//делаем первую букву заглавной
 
         return $result;

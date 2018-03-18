@@ -18,15 +18,15 @@ class MainController
 
     public function test()
     {
-
+        echo '<pre>';
 //        $test = new Tools\Parsers\Title\BingTitleParser;
-//        var_dump($test->run('кросовки', 31, 300));
+//        var_dump($test->run('кроссовки', 10, 300));
 //
 //        $test2 = new Tools\Parsers\Content\BingContentParser;
 //        var_dump($test2->run('кроссовки', 11, 300));
 
 //        $test3 = new Tools\Parsers\Comment\BingCommentParser;
-//        var_dump($test3->run('кроссовки', 5, 50));
+//        var_dump($test3->run('кроссовки', 5, 100));
 
 //        $test4 = new \Tools\Parsers\User\VkUserParser();
 //        var_dump($test4->run(40));
@@ -51,6 +51,7 @@ class MainController
 
 //        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
 //        $generator_comments->generateElements(2, 300, 2);
+        echo '</pre>';
 
     }
 }

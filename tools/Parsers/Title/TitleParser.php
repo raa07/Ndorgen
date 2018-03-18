@@ -35,24 +35,23 @@ abstract class TitleParser extends Parser
         {
             $new_title = '';
 
-            while(strlen($new_title) < $this->length && $tries < 5) {
+            while(mb_strlen($new_title) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword, $this->page);
                 $data = $this->request($url);//делаем запрос к поисковику
 
                 foreach ($data as $entity) {
                     $title = $entity['name'];
                     $title = $this->validate($title);
-                    $title = trim($title);
                     if($title){
-                        if(strlen($new_title) >= $this->length) break 1;
-                        $new_title .= '-' . $title;
+                        if(mb_strlen($new_title) >= $this->length) break 1;
+                        $new_title .= ' - ' . $title;
                     }
                 }
                 $tries++;
             }
 
-            if(strlen($new_title) >= $this->length) {
-                $result[] = substr($new_title, 1);
+            if(mb_strlen($new_title) >= $this->length) {
+                $result[] = substr($new_title, 3);
             } else {
                 $parse_tries++;
             }
@@ -65,14 +64,21 @@ abstract class TitleParser extends Parser
 
     protected function validate($title)//валидаця тайтлов
     {
+        $title = preg_replace('/([-_])/', '', $title);
+        $title = preg_replace('/^([\.,])/', '', $title);
         $title = preg_replace('/(pdf.*)$/', '', $title);
         $title = preg_replace('/(ООО ".*")/', '', $title);
         $title = preg_replace('/(\d{2}\.\d{2}\.\d{4})/', '', $title);
         $title = preg_replace('/(\|)/', '', $title);
         $title = preg_replace('/(\…)/', '', $title);
         $title = preg_replace('/(\.){2,}/', '', $title);
-        $title = preg_replace('/[a-zA-Z\-\.0-9]*(href|url|http|www|\.ru|\.com|\.net|\.info|\.org|\.ua)/i', '', $title);
+        $title = preg_replace('/[a-zA-Z\-\.0-9]*(href|url|http|www|\.ru|\.com|\.net|\.info|\.org|\.ua|\.by)/i', '', $title);
         $title = trim($title);
+        $title = preg_replace('/(\s.)$/u', '', $title);
+
+        if(substr_count($title, ' ') <= 2) {
+            return false;
+        }
         if(!preg_match('/([а-яА-Я])/u', $title)) return false;
         if(!preg_match('/( )/u', $title)) return false;
 

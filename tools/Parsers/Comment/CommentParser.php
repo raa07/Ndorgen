@@ -64,7 +64,7 @@ abstract class CommentParser extends Parser
         $result = '';
 
         foreach ($links as $link) {
-            if(strlen($result) >= $this->length) break;
+            if(mb_strlen($result) >= $this->length) break;
 
             $out = $this->request_page($link);
             $out = $this->validate_tags($out);
@@ -76,7 +76,9 @@ abstract class CommentParser extends Parser
                 if($p !== '' && $p !== ' ' && count(preg_split('/ /', $p)) > 2 && preg_match('/[а-яА-Я]/', $p) )
                 {
                     $p = $this->validate($p);
-                    $result .='. '.$p;
+                    if(!empty($p)) {
+                        $result .='. ' . $p;
+                    }
                 }
             }
         }
@@ -90,7 +92,12 @@ abstract class CommentParser extends Parser
         $text = preg_replace('/((8|\+7|\+38)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}/', '', $text);
         $text = preg_replace('/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/', '', $text);
         $text = preg_replace('/(\S+)@([a-z0-9-]+)(\.)([a-z]{2,4})(\.?)([a-z]{0,4})+/', '', $text);
+        $text = preg_replace('/^([\.,])/', '', $text);
+        $text = preg_replace('/(\s.)$/u', '', $text);
         $text = trim($text);
+        if(substr_count($text, ' ') <= 2) {
+            return '';
+        }
 
         return $text;
     }
