@@ -4,13 +4,12 @@ namespace App\GlobalModels;
 
 use App\GlobalModel;
 
-class Dorgens extends GlobalModel
+class Categories extends GlobalModel
 {
-    public function createDorgen($name, $cid)
+    public function createCategory($name)
     {
         $dorgen = [
-            'n' => $name,
-            'cid' => $cid
+            'n' => $name
         ];
 
         $result = $this->insert($dorgen);

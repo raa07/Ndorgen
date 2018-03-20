@@ -22,8 +22,9 @@ class GeneratorDemon extends Demon
 
     public function doTasks($task) : array
     {
-        $count_intervals = $task['ci'];
-        $result_count = rand($count_intervals[0], $count_intervals[1]);
+        $count_start = $task['cs'];
+        $count_end = $task['ce'];
+        $result_count = rand($count_start, $count_end);
 
         switch($task['t']) {
             case Tasks::TYPE_POST:

@@ -20,13 +20,13 @@ class ScheduleDemon extends Demon
         $dorgens = [];
         foreach($dorgens as $dorgen) {
             if($dorgen->needPosts()) {
-                $this->createTask([], Tasks::TYPE_POST, $dorgen->getName());
+                $this->createTask([10, 20], Tasks::TYPE_POST, $dorgen->getName());
             }
             if($dorgen->needUsers()) {
-                $this->createTask([], Tasks::TYPE_USER, $dorgen->getName());
+                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
             }
             if($dorgen->needComment()) {
-                $this->createTask([], Tasks::TYPE_USER, $dorgen->getName());
+                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
             }
         }
     }

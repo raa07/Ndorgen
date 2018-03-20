@@ -19,6 +19,12 @@ class MainController
     public function test()
     {
         echo '<pre>';
+//        $demon1 = new Demons\ScheduleDemon();
+//        $demon1->createTask([10, 15], 1, 'localhost');
+
+        $demon2 = new \Demons\GeneratorDemon();
+        $demon2->run();
+
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run('кроссовки', 10, 300));
 //
@@ -43,8 +49,8 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 
-        $generator = new \Tools\Generators\Generators\PostsGenerator();
-        $generator->generateElements(10);//
+//        $generator = new \Tools\Generators\Generators\PostsGenerator();
+//        $generator->generateElements(10);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        $generator->generateElements(5);
