@@ -22,8 +22,16 @@ class MainController
 //        $demon1 = new Demons\ScheduleDemon();
 //        $demon1->createTask([10, 15], 1, 'localhost');
 
-        $demon2 = new \Demons\GeneratorDemon();
-        $demon2->run();
+//        $category = new \App\GlobalModels\Categories();
+////        $category->createCategory('тестовая категория');
+//        $category_id = iterator_to_array($category->all())[0]['_id'];
+//
+//        $dorgen = new \App\GlobalModels\Dorgens();
+//        $dorgen->createDorgen(Dorgen()->getDomain(), $category_id);
+
+
+//        $demon2 = new \Demons\GeneratorDemon();
+//        $demon2->run();
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run('кроссовки', 10, 300));

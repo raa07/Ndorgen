@@ -37,5 +37,5 @@ class Dorgen
         self::$domain = $domain;
     }
 
-
+//todo: тут реализовать 0 - возрат категории дора
 }
