@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\GlobalModels\Categories;
+use App\GlobalModels\Dorgens;
 use Tools\Router;
 
 
@@ -9,6 +11,7 @@ class Dorgen
 {
     private static $instance = null;
     private static $domain;
+    private static $category = false;
 
     private function __construct(){}
     private function __clone(){}
@@ -37,5 +40,15 @@ class Dorgen
         self::$domain = $domain;
     }
 
-//todo: тут реализовать 0 - возрат категории дора
+    public static function getCategorySID()
+    {
+        if(!static::$category){
+            $dorgen_model = new Dorgens();
+            $category = $dorgen_model->getCategoryByHost(static::$domain);
+            if(!$category) throw new \Exception("ERROR - CATEGORY NOT FOUND");
+            static::$category = $category;
+        }
+
+        return static::$category;
+    }
 }

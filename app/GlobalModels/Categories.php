@@ -6,15 +6,15 @@ use App\GlobalModel;
 
 class Categories extends GlobalModel
 {
-    public function createCategory($name)
+    public function createCategory($name, $sid)
     {
         $dorgen = [
-            'n' => $name
+            'n' => $name,
+            'sid' => $sid
         ];
 
         $result = $this->insert($dorgen);
 
         return $result;
     }
-
 }

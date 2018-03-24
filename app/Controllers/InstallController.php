@@ -16,8 +16,8 @@ class InstallController
         $dorgen_name = $_REQUEST['dorgen_name'];
         $category = $_REQUEST['category'];
 
-        $dorgen = new Dorgens();
-        $dorgen->createDorgen($dorgen_name, $category);
+//        $dorgen = new Dorgens();
+//        $dorgen->createDorgen($dorgen_name, $category);
 
 //        $category = new \App\GlobalModels\Categories();
 ////        $category->createCategory('тестовая категория');

@@ -5,14 +5,15 @@ namespace App;
 abstract class GlobalModel
 {
     protected $collection_name;
+    protected $db_name;
     public $collection;
 
     function __construct()
     {
-        $db_name = 'NDorgenSettings';
+        $db_name = $this->db_name ?? 'NDorgenSettings';
         $cnn = new \MongoDB\Client();
         $db = $cnn->$db_name;
-        $collection_name = static::$collection_name ?? static::class;
+        $collection_name = $this->collection_name ?? static::class;
         $this->collection = $db->$collection_name;
     }
 

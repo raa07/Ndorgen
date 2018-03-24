@@ -19,6 +19,13 @@ class MainController
     public function test()
     {
         echo '<pre>';
+        $links_array = ['https://geektimes.ru/all/', 'https://www.instagram.com/'];
+        $links = new \App\GlobalModels\Links();
+//        $links->addLink('https://www.instagram.com/');
+        var_dump($links->checkLink($links_array));
+
+
+
 //        $demon1 = new Demons\ScheduleDemon();
 //        $demon1->createTask([10, 15], 1, 'localhost');
 
