@@ -32,6 +32,7 @@ abstract class CommentParser extends Parser
         while(count($result) < $this->results_count && $tries !== 5)
         {
             $links = $this->get_links();
+            //здесь проводим валидацию линков
             $last_count = count($result);
             $result[] = $this->parse_comments($links);
             if(count($result) === $last_count) $tries++;

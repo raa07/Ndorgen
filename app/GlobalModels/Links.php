@@ -9,23 +9,30 @@ class Links extends GlobalModel
     protected $collection_name;
     protected $db_name;
 
-    public function __construct()
+    static $TITLE_PREFIX = 'Titles';
+    static $CONTENT_PREFIX = 'Contents';
+    static $COMMENT_PREFIX = 'Comments';
+
+    public function __construct($prefix)
     {
         $links_collection = Dorgen()->getCategorySID();
-        $this->collection_name = 'Links_' . $links_collection;
+        $this->collection_name = $prefix .'_links_' . $links_collection;
         $this->db_name = 'Links';
 
         parent::__construct();
     }
 
 
-    public function addLink($name)
+    public function addLinks($links)
     {
-        $link = [
-            'n' => $name
-        ];
+        $insert_data = [];
+        foreach($links as $link) {
+            $insert_data[] = [
+                'n' => $link
+            ];
+        }
 
-        $result = $this->insert($link);
+        $result = $this->insertMany($insert_data);
 
         return $result;
     }

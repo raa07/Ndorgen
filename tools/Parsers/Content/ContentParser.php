@@ -1,6 +1,7 @@
 <?php
 namespace Tools\Parsers\Content;
 
+use Tools\DuplicatesValidators\Validators\ContentDuplicatesValidator;
 use Tools\Parsers\Parser;
 //парсер контента
 abstract class ContentParser extends Parser
@@ -26,29 +27,36 @@ abstract class ContentParser extends Parser
 
     protected function parse()//получаем ссылки и дискрипшены по ключевику на page странице
     {
-        $descs = [];
-        $links = [];
         $tries = 0;
         $parse_tries = 0;
         $result = [];
+        $links_validator = new ContentDuplicatesValidator;
 
-        while(count($links) < $this->results_count && $parse_tries < 5)//пока не получим нужное кличество контента или пока не накапает 5 попыток
+        $descs_c = 0;
+
+        while(count($result) < $this->results_count && $parse_tries < 10)//пока не получим нужное кличество контента или пока не накапает 5 попыток
         {
-            $new_desc='';
+            $new_desc = '';
 
-            while(mb_strlen($new_desc) < $this->length && $tries < 5) {
+            while(mb_strlen($new_desc) < $this->length && $tries < 10) {
                 $url = $this->compareUrl($this->keyword, $this->page);
                 $data = $this->request($url);
+                $links_data = [];
 
                 foreach($data as $entity) {
-                    $desc_result = $this->validate($entity['snippet']);//проводим валидацию дискрипшена
+                    $links_data[$entity['url']] = $entity['snippet'];
+                }
+                $descs = $links_validator->validate($links_data);
+                foreach($descs as $desc) {
+                    $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
 
                     if($desc_result) {
                         if(mb_strlen($new_desc) >= $this->length) break 1;
                         $new_desc .= '.' . $desc_result;
-                        $links[] = $entity['url'];
+                        $descs_c++;
                     }
                 }
+                $this->page++;
                 $tries++;
             }
             if(mb_strlen($new_desc) >= $this->length) {
@@ -57,8 +65,9 @@ abstract class ContentParser extends Parser
                 $parse_tries++;
             }
             $tries = 0;
-            $this->page++;
         }
+
+        echo $descs_c;
 
         return $result;
     }

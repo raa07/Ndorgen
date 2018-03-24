@@ -40,6 +40,7 @@ abstract class TitleParser extends Parser
                 $data = $this->request($url);//делаем запрос к поисковику
 
                 foreach ($data as $entity) {
+                    /////////////////////
                     $title = $entity['name'];
                     $title = $this->validate($title);
                     if($title){

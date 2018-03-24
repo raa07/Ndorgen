@@ -19,10 +19,10 @@ class MainController
     public function test()
     {
         echo '<pre>';
-        $links_array = ['https://geektimes.ru/all/', 'https://www.instagram.com/'];
-        $links = new \App\GlobalModels\Links();
+//        $links_array = ['https://geektimes.ru/all/', 'https://www.instagram.com/'];
+//        $links = new \App\GlobalModels\Links(\App\GlobalModels\Links::$POST_PREFIX);
 //        $links->addLink('https://www.instagram.com/');
-        var_dump($links->checkLink($links_array));
+//        var_dump($links->checkLink($links_array));
 
 
 
@@ -43,8 +43,8 @@ class MainController
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run('кроссовки', 10, 300));
 //
-//        $test2 = new Tools\Parsers\Content\BingContentParser;
-//        var_dump($test2->run('кроссовки', 11, 300));
+        $test2 = new Tools\Parsers\Content\BingContentParser;
+        var_dump($test2->run('кроссовки', 11, 300));
 
 //        $test3 = new Tools\Parsers\Comment\BingCommentParser;
 //        var_dump($test3->run('кроссовки', 5, 100));
