@@ -1,6 +1,7 @@
 <?php
 namespace Tools\Parsers\Title;
 
+use Tools\DuplicatesValidators\Validators\TitlesDuplicatesValidator;
 use Tools\Parsers\Parser;
 //парсер тайтлов
 abstract class TitleParser extends Parser
@@ -30,6 +31,8 @@ abstract class TitleParser extends Parser
         $result = [];
         $tries = 0;
         $parse_tries = 0;
+        $links_validator = new TitlesDuplicatesValidator();
+
 
         while(count($result) < $this->results_count && $parse_tries <5)//пока не получим нужное кличество тайтлов или пока не накапает 5 попыток
         {
@@ -38,10 +41,14 @@ abstract class TitleParser extends Parser
             while(mb_strlen($new_title) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword, $this->page);
                 $data = $this->request($url);//делаем запрос к поисковику
+                $links_data = [];
 
-                foreach ($data as $entity) {
-                    /////////////////////
-                    $title = $entity['name'];
+                foreach($data as $entity) {
+                    $links_data[$entity['url']] = $entity['name'];
+                }
+
+                $titles = $links_validator->validate($links_data);
+                foreach ($titles as $title) {
                     $title = $this->validate($title);
                     if($title){
                         if(mb_strlen($new_title) >= $this->length) break 1;
@@ -49,6 +56,7 @@ abstract class TitleParser extends Parser
                     }
                 }
                 $tries++;
+                $this->page++;
             }
 
             if(mb_strlen($new_title) >= $this->length) {
@@ -56,9 +64,7 @@ abstract class TitleParser extends Parser
             } else {
                 $parse_tries++;
             }
-
             $tries = 0;
-            $this->page++;
         }
         return $result;
     }

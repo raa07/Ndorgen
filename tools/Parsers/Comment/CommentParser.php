@@ -1,6 +1,7 @@
 <?php
 namespace Tools\Parsers\Comment;
 
+use Tools\DuplicatesValidators\Validators\CommentsDuplicatesValidator;
 use Tools\Parsers\Parser;
 
 abstract class CommentParser extends Parser
@@ -28,14 +29,18 @@ abstract class CommentParser extends Parser
     {
         $result = [];
         $tries = 0;
+        $links_validator = new CommentsDuplicatesValidator;
 
-        while(count($result) < $this->results_count && $tries !== 5)
+        while(count($result) < $this->results_count && $tries !== 20)
         {
             $links = $this->get_links();
-            //здесь проводим валидацию линков
+            $links = $links_validator->validate($links);
+
             $last_count = count($result);
-            $result[] = $this->parse_comments($links);
-            if(count($result) === $last_count) $tries++;
+            $new_result = $this->parse_comments($links);
+            if(!empty($new_result)) $result[] = $new_result;
+
+            if(count($result) === $last_count && count($links) !== 0) $tries++;
             $this->page++;
         }
 
@@ -69,6 +74,7 @@ abstract class CommentParser extends Parser
 
             $out = $this->request_page($link);
             $out = $this->validate_tags($out);
+            if(!$out) continue;
             preg_match_all('!\<p\>(.*?)\</p\>!siu', $out, $lines);//получаем весь текст в <p>
             foreach ($lines[1] as $p) //построчечно удаляем лишние символы и номера/ссылки
             {
@@ -136,7 +142,7 @@ abstract class CommentParser extends Parser
 
     protected function request_page($url)
     {
-        return file_get_contents($url);
+        return @file_get_contents($url);
     }
 
     protected function result_validate($text)

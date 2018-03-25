@@ -42,9 +42,9 @@ class MainController
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run('кроссовки', 10, 300));
-//
-        $test2 = new Tools\Parsers\Content\BingContentParser;
-        var_dump($test2->run('кроссовки', 11, 300));
+
+//        $test2 = new Tools\Parsers\Content\BingContentParser;
+//        var_dump($test2->run('кроссовки', 11, 300));
 
 //        $test3 = new Tools\Parsers\Comment\BingCommentParser;
 //        var_dump($test3->run('кроссовки', 5, 100));
@@ -64,8 +64,8 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 
-//        $generator = new \Tools\Generators\Generators\PostsGenerator();
-//        $generator->generateElements(10);//
+        $generator = new \Tools\Generators\Generators\PostsGenerator();
+        $generator->generateElements(50);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        $generator->generateElements(5);

@@ -37,9 +37,9 @@ class Links extends GlobalModel
         return $result;
     }
 
-    public function checkLink($links)
+    public function checkLink(array $links)
     {
-        $duplicates = $this->collection->find(['n' => ['$in' => $links]]);
+        $duplicates = $this->collection->find(['n' => ['$in' => array_values($links)]]);
         $duplicate_array = [];
         foreach($duplicates as $duplicate)
         {
