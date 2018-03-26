@@ -43,4 +43,13 @@ class Keywords extends Model
             ['$inc' => ['pc' => 1]]
         );
     }
+
+    public function postNeed()
+    {
+        $post_count = 10;///////////////TODO: config
+        $keyword = $this->collection->findOne(['pc' => ['$lt' => $post_count]]);
+        $result = isset($keyword['_id']);
+
+        return $result;
+    }
 }

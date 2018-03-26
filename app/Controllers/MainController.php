@@ -27,6 +27,12 @@ class MainController
 
 
 //        $demon1 = new Demons\ScheduleDemon();
+//        $demon1->run();
+
+
+//        $keyword = new \App\Models\Keywords();
+//        $keyword->postNeed();
+
 //        $demon1->createTask([10, 15], 1, 'localhost');
 
 //        $category = new \App\GlobalModels\Categories();
@@ -63,9 +69,9 @@ class MainController
 //        $unusedUser = $user->getUnused();
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
-
-        $generator = new \Tools\Generators\Generators\PostsGenerator();
-        $generator->generateElements(50);//
+//
+//        $generator = new \Tools\Generators\Generators\PostsGenerator();
+//        $generator->generateElements(50);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        $generator->generateElements(5);

@@ -85,4 +85,13 @@ class Posts extends Model
 
         return $link;
     }
+
+    public function commentNeed()
+    {
+        $comment_count = 10;///////////////TODO: config
+        $post = $this->collection->findOne(['cc' => ['$lt' => $comment_count]]);
+        $result = isset($post['_id']);
+
+        return $result;
+    }
 }

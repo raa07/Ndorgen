@@ -7,14 +7,15 @@ abstract class GlobalModel
     protected $collection_name;
     protected $db_name;
     public $collection;
+    protected $conn;
 
     function __construct()
     {
         $db_name = $this->db_name ?? 'NDorgenSettings';
         $cnn = new \MongoDB\Client();
-        $db = $cnn->$db_name;
+        $this->conn = $cnn->$db_name;
         $collection_name = $this->collection_name ?? static::class;
-        $this->collection = $db->$collection_name;
+        $this->collection = $this->conn->$collection_name;
     }
 
     public function all() //получение всех записей из бд

@@ -60,4 +60,16 @@ class Users extends Model
             ['$inc' => ['cc' => 1]]
         );
     }
+
+    public function userNeed()
+    {
+        $unused = $this->getUnused();
+        if(empty($unused)) return true; //если нету пользователей (не нашло самого неиспользуемого) - значит точно надо создать
+        //если есть ещё пользователи у которых меньше 5 постов - не создаём новых
+        $users_posts_count = 5;///////////////TODO: config
+        $user = $this->collection->findOne(['pc' => ['$lt' => $users_posts_count]]);
+        $result = isset($user['_id']);
+
+        return $result;
+    }
 }
