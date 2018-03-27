@@ -7,6 +7,9 @@ use App\Model;
 class Posts extends Model
 {
     const LINK_VALID = '/[^a-z0-9\-]*/';
+    const POST_PER_PAGE = 6;
+
+    private $pagesCount;
 
     public function createPost(string $title,
     string $text,
@@ -93,5 +96,18 @@ class Posts extends Model
         $result = isset($post['_id']);
 
         return $result;
+    }
+
+    public function allPaginated($page)
+    {
+        $page = abs($page-1);
+        $offset = $page * self::POST_PER_PAGE;
+        $this->pagesCount = (int) ceil($this->collection->count() / self::POST_PER_PAGE);
+        return $this->collection->find([], ['limit' => self::POST_PER_PAGE, 'skip' => $offset]);
+    }
+
+    public function getPagesCount()
+    {
+        return $this->pagesCount ?? 0;
     }
 }

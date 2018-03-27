@@ -23,4 +23,11 @@ class Comments extends Model
 
         return $result;
     }
+
+    public function getPostsComments($post_id)
+    {
+        $post_id = (string) $post_id;
+        $comments = $this->collection->find(['pid' => $post_id]);
+        return $comments;
+    }
 }

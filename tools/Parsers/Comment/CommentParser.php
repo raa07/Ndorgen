@@ -31,7 +31,7 @@ abstract class CommentParser extends Parser
         $tries = 0;
         $links_validator = new CommentsDuplicatesValidator;
 
-        while(count($result) < $this->results_count && $tries !== 20)
+        while(count($result) < $this->results_count && $tries !== 5)
         {
             $links = $this->get_links();
             $links = $links_validator->validate($links);

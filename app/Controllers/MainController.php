@@ -8,12 +8,13 @@ class MainController
 {
     public function index()
     {
-        $posts = new Posts;
-        $posts = $posts->all();
+        $current_page = (int) isset($_GET['page']) ? $_GET['page'] : 1;
+        $posts_model = new Posts;
+        $posts = $posts_model->allPaginated($current_page);
+        $pages_count = $posts_model->getPagesCount();
+//        return $this->test();
 
-        return $this->test();
-
-        return View::result('template1/index', ['posts' => $posts]);
+        return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }
 
     public function test()
@@ -71,13 +72,13 @@ class MainController
 //        var_dump($unusedUser);
 //
 //        $generator = new \Tools\Generators\Generators\PostsGenerator();
-//        $generator->generateElements(50);//
+//        $generator->generateElements(8);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
-//        $generator->generateElements(5);
+//        var_dump($generator->generateElements(5));
 
-//        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
-//        $generator_comments->generateElements(2, 300, 2);
+        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
+        $generator_comments->generateElements(10, 10, 1);
         echo '</pre>';
 
     }
