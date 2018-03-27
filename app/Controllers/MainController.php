@@ -12,7 +12,7 @@ class MainController
         $posts_model = new Posts;
         $posts = $posts_model->allPaginated($current_page);
         $pages_count = $posts_model->getPagesCount();
-//        return $this->test();
+        return $this->test();
 
         return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }
@@ -47,8 +47,8 @@ class MainController
 //        $demon2 = new \Demons\GeneratorDemon();
 //        $demon2->run();
 
-//        $test = new Tools\Parsers\Title\BingTitleParser;
-//        var_dump($test->run('кроссовки', 10, 300));
+        $test = new Tools\Parsers\Title\BingTitleParser;
+        var_dump($test->run('кроссовки', 5, 65));
 
 //        $test2 = new Tools\Parsers\Content\BingContentParser;
 //        var_dump($test2->run('кроссовки', 11, 300));

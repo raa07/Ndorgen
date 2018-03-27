@@ -20,9 +20,7 @@ abstract class ContentParser extends Parser
         $this->page = $page;
         $this->length = $length;
 
-        $result = $this->parse();
-
-        return $result;
+        return $this->parse();
     }
 
     protected function parse()//получаем ссылки и дискрипшены по ключевику на page странице
@@ -31,12 +29,16 @@ abstract class ContentParser extends Parser
         $parse_tries = 0;
         $result = [];
         $links_validator = new ContentDuplicatesValidator;
-
-        $descs_c = 0;
+        $next_desc = '';
 
         while(count($result) < $this->results_count && $parse_tries < 10)//пока не получим нужное кличество контента или пока не накапает 5 попыток
         {
-            $new_desc = '';
+            if(!empty($next_desc)) {
+                $new_desc = $next_desc;
+                $next_desc = '';
+            }else {
+                $new_desc = '';
+            }
 
             while(mb_strlen($new_desc) < $this->length && $tries < 10) {
                 $url = $this->compareUrl($this->keyword, $this->page);
@@ -51,9 +53,11 @@ abstract class ContentParser extends Parser
                     $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
 
                     if($desc_result) {
-                        if(mb_strlen($new_desc) >= $this->length) break 1;
+                        if(mb_strlen($new_desc) >= $this->length) {
+                            $next_desc = $desc_result;
+                            break 1;
+                        }
                         $new_desc .= '.' . $desc_result;
-                        $descs_c++;
                     }
                 }
                 $this->page++;
@@ -67,8 +71,6 @@ abstract class ContentParser extends Parser
             $tries = 0;
         }
 
-        echo $descs_c;
-
         return $result;
     }
 
@@ -76,21 +78,29 @@ abstract class ContentParser extends Parser
     {
         $content = strip_tags($content);
         $content = preg_replace('/(pdf.*)$/', '', $content);
-        $content = preg_replace('/(ООО ".*")/', '', $content);
+        $content = preg_replace('/(ООО ".*")/u', '', $content);
         $content = preg_replace('/(\d{2}\.\d{2}\.\d{4})/', '', $content);
         $content = preg_replace('/(\|)/', '', $content);
-        $content = preg_replace('/(\…)/', '', $content);
+        $content = preg_replace('/(\…)/u', '', $content);
         $content = preg_replace('/(\.){2,}/', '', $content);
         $content = preg_replace('/[a-zA-Z\-\.0-9]*(href|url|http|www|\.ru|\.com|\.net|\.info|\.org|\.ua)/i', '', $content);
         $content = preg_replace('/^([\.,])/', '', $content);
         $content = preg_replace('/(\s.)$/u', '', $content);
         $content = trim($content);
-        if(!preg_match('/([а-яА-Я])/u', $content)) $result = false;//если нету русских букв
-        if(!preg_match('/( )/u', $content)) $result = false;
-        if(substr_count($content, ' ') <= 2) return false;
+        if(!preg_match('/([а-яА-Я])/u', $content)) {
+            $result = false;
+        }//если нету русских букв
+        if(!preg_match('/( )/u', $content)) {
+            $result = false;
+        }
+        if(substr_count($content, ' ') <= 2) {
+            return false;
+        }
 
 
-        if(!isset($result)) $result = ucfirst($content);//делаем первую букву заглавной
+        if(!isset($result)) {
+            $result = ucfirst($content);
+        }//делаем первую букву заглавной
 
         return $result;
     }

@@ -16,7 +16,7 @@ class Dorgen
     private function __construct(){}
     private function __clone(){}
 
-    static public function getInstance() {
+    public static function getInstance() {
         if(is_null(self::$instance))
         {
             self::$instance = new self();

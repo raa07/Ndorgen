@@ -16,4 +16,16 @@ class Categories extends Model
 
         return (bool)$result;
     }
+
+    public function createCategories(array $categories):bool
+    {
+        foreach($categories as $category)
+        {
+            $data[] = [
+                'ti' => $category
+            ];
+        }
+
+        return $this->insertMany($data);
+    }
 }

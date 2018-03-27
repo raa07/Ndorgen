@@ -17,6 +17,15 @@ class Dorgens extends GlobalModel
         parent::__construct();
     }
 
+    public function installDorgen($name, $cid)
+    {
+        $category = $this->getById($cid);
+        if(!$category) {
+            return false;
+        }
+        return $this->createDorgen($name, $cid, $category['csid']);
+    }
+
     public function createDorgen($name, $cid, $csid)
     {
         $dorgen = [
@@ -25,21 +34,20 @@ class Dorgens extends GlobalModel
             'csid' => $csid
         ];
 
-        $result = $this->insert($dorgen);
-
-        return $result;
+        return $this->insert($dorgen);
     }
 
     public function getCategoryByHost($host)
     {
         $dorgen = $this->findOne('n', $host);
 
-        return !isset($dorgen['csid']) ? false : $dorgen['csid'];
+        return !isset($dorgen['csid']) ?? false;
     }
 
     public function getAll()
     {
         $dorgens_db = $this->all();
+        $result = [];
 
         foreach($dorgens_db as $dorgen) {
             $result[] = new Dorgens($dorgen);
@@ -53,9 +61,8 @@ class Dorgens extends GlobalModel
         if(!isset($this->dorgen['_id'])) return false;
         Dorgen()->setDomain($this->dorgen['n']);
         $keyword_model = new Keywords;
-        $result = $keyword_model->postNeed();
 
-        return $result;
+        return $keyword_model->postNeed();
     }
 
     public function needComments()
@@ -63,9 +70,8 @@ class Dorgens extends GlobalModel
         if(!isset($this->dorgen['_id'])) return false;
         Dorgen()->setDomain($this->dorgen['n']);
         $post_model = new Posts();
-        $result = $post_model->commentNeed();
 
-        return $result;
+        return $post_model->commentNeed();
     }
 
     public function needUsers()
@@ -73,9 +79,8 @@ class Dorgens extends GlobalModel
         if(!isset($this->dorgen['_id'])) return false;
         Dorgen()->setDomain($this->dorgen['n']);
         $user_model = new Users();
-        $result = $user_model->userNeed();
 
-        return $result;
+        return $user_model->userNeed();
     }
 
     public function getName()

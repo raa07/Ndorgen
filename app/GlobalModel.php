@@ -40,4 +40,10 @@ abstract class GlobalModel
         $result = $this->collection->findOne([$field => $value]);
         return (bool) $result ? $result : [];
     }
+
+    public function getById(string $id)
+    {
+        $id = new \MongoDB\BSON\ObjectID($id);
+        return $this->collection->findOne(['_id' => $id]);
+    }
 }

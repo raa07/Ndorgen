@@ -32,11 +32,16 @@ abstract class TitleParser extends Parser
         $tries = 0;
         $parse_tries = 0;
         $links_validator = new TitlesDuplicatesValidator();
+        $next_title = '';
 
-
-        while(count($result) < $this->results_count && $parse_tries <5)//пока не получим нужное кличество тайтлов или пока не накапает 5 попыток
+        while(count($result) < $this->results_count && $parse_tries < 5)//пока не получим нужное кличество тайтлов или пока не накапает 5 попыток
         {
-            $new_title = '';
+//            if(!empty($next_title)) {
+//                $new_title = $next_title;
+//                $next_title = '';
+//            } else{
+                $new_title = '';
+//            }
 
             while(mb_strlen($new_title) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword, $this->page);
@@ -51,14 +56,16 @@ abstract class TitleParser extends Parser
                 foreach ($titles as $title) {
                     $title = $this->validate($title);
                     if($title){
-                        if(mb_strlen($new_title) >= $this->length) break 1;
+//                        if(mb_strlen($new_title) >= $this->length) {
+//                            $next_title = $title;
+//                            break 1;
+//                        }
                         $new_title .= ' - ' . $title;
                     }
                 }
                 $tries++;
                 $this->page++;
             }
-
             if(mb_strlen($new_title) >= $this->length) {
                 $result[] = substr($new_title, 3);
             } else {
@@ -66,6 +73,7 @@ abstract class TitleParser extends Parser
             }
             $tries = 0;
         }
+
         return $result;
     }
 
@@ -74,10 +82,10 @@ abstract class TitleParser extends Parser
         $title = preg_replace('/([-_])/', '', $title);
         $title = preg_replace('/^([\.,])/', '', $title);
         $title = preg_replace('/(pdf.*)$/', '', $title);
-        $title = preg_replace('/(ООО ".*")/', '', $title);
+        $title = preg_replace('/(ООО ".*")/u', '', $title);
         $title = preg_replace('/(\d{2}\.\d{2}\.\d{4})/', '', $title);
         $title = preg_replace('/(\|)/', '', $title);
-        $title = preg_replace('/(\…)/', '', $title);
+        $title = preg_replace('/(\…)/u', '', $title);
         $title = preg_replace('/(\.){2,}/', '', $title);
         $title = preg_replace('/[a-zA-Z\-\.0-9]*(href|url|http|www|\.ru|\.com|\.net|\.info|\.org|\.ua|\.by)/i', '', $title);
         $title = trim($title);
@@ -86,8 +94,13 @@ abstract class TitleParser extends Parser
         if(substr_count($title, ' ') <= 2) {
             return false;
         }
-        if(!preg_match('/([а-яА-Я])/u', $title)) return false;
-        if(!preg_match('/( )/u', $title)) return false;
+        if(!preg_match('/([а-яА-Я])/u', $title)) {
+            return false;
+        }
+        if(!preg_match('/( )/u', $title)) {
+            return false;
+        }
+        $title = ucfirst($title);
 
         return $title;
     }

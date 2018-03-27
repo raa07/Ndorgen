@@ -48,8 +48,27 @@ class Keywords extends Model
     {
         $post_count = 10;///////////////TODO: config
         $keyword = $this->collection->findOne(['pc' => ['$lt' => $post_count]]);
-        $result = isset($keyword['_id']);
 
-        return $result;
+        return isset($keyword['_id']);
+    }
+
+    public function createKeywords(array $keywords):bool
+    {
+        $categories = new Categories;
+        $categories = $categories->all();
+        $categories = iterator_to_array($categories);
+        $data = [];
+        foreach($keywords as $keyword)
+        {
+            $category = array_rand($categories, 0);
+            $data[] = [
+                'ti' => $keyword,
+                'cid' => $category['_id'],
+                'cti' => $category['ti'],
+                'pc' => 0 //post count
+            ];
+        }
+
+        return $this->insertMany($data);
     }
 }

@@ -32,4 +32,10 @@ abstract class Model
         $result = $this->collection->findOne([$field => $value]);
         return (bool) $result ? $result : [];
     }
+
+    protected function insertMany(array $data):bool //вставка массива данных в бд
+    {
+        $result = (bool) $this->collection->insertMany($data);
+        return $result;
+    }
 }

@@ -10,7 +10,7 @@ class Comments extends Model
        string $pid,
        array $author):bool
     {
-        $date = date("F j, Y");
+        $date = date('F j, Y');
 
         $comment = [
             'tx' => $text,
@@ -19,15 +19,13 @@ class Comments extends Model
             'a' => $author
         ];
 
-        $result = $this->insert($comment);
-
-        return $result;
+        return $this->insert($comment);
     }
 
     public function getPostsComments($post_id)
     {
         $post_id = (string) $post_id;
-        $comments = $this->collection->find(['pid' => $post_id]);
-        return $comments;
+
+        return $this->collection->find(['pid' => $post_id]);
     }
 }
