@@ -19,7 +19,8 @@ class Dorgens extends GlobalModel
 
     public function installDorgen($name, $cid)
     {
-        $category = $this->getById($cid);
+        $category_model = new Categories();
+        $category = $category_model->getById($cid);
         if(!$category) {
             return false;
         }
@@ -41,7 +42,7 @@ class Dorgens extends GlobalModel
     {
         $dorgen = $this->findOne('n', $host);
 
-        return !isset($dorgen['csid']) ?? false;
+        return $dorgen['csid'] ?? false;
     }
 
     public function getAll()

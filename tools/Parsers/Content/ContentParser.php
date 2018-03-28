@@ -64,7 +64,8 @@ abstract class ContentParser extends Parser
                 $tries++;
             }
             if(mb_strlen($new_desc) >= $this->length) {
-                $result[] = substr($new_desc, 1);
+                if($new_desc[0] === '.') $new_desc = substr($new_desc, 1);
+                $result[] = $new_desc;
             } else {
                 $parse_tries++;
             }
@@ -97,11 +98,6 @@ abstract class ContentParser extends Parser
             return false;
         }
 
-
-        if(!isset($result)) {
-            $result = ucfirst($content);
-        }//делаем первую букву заглавной
-
-        return $result;
+        return $content;
     }
 }

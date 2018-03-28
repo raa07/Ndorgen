@@ -45,7 +45,9 @@ class Dorgen
         if(!static::$category){
             $dorgen_model = new Dorgens();
             $category = $dorgen_model->getCategoryByHost(static::$domain);
-            if(!$category) throw new \Exception("ERROR - CATEGORY NOT FOUND");
+            if(!$category) {
+                throw new \Exception("ERROR - CATEGORY NOT FOUND");
+            }
             static::$category = $category;
         }
 

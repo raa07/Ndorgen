@@ -10,8 +10,12 @@ class InstallController
 {
     public function __construct()
     {
+        if(!isset($_REQUEST['pass'])) die('security');
         if($_REQUEST['pass'] !== 'b2345jh234523b4') {
             die('security');
+        }
+        if(isset($_REQUEST['dor_name'])){
+            Dorgen()->setDomain($_REQUEST['dor_name']);
         }
     }
 
@@ -28,42 +32,61 @@ class InstallController
 
     public function firstStep()
     {
+        $dor_name = $_REQUEST['dor_name'];
+        $category_id = $_REQUEST['category_id'];
+        $dor = new Dorgens();
+        $dor_result = $dor->installDorgen($dor_name, $category_id);
 
-        $dorgen_name = $_REQUEST['dorgen_name'];
-        $category_id = $_REQUEST['$category_id'];
+        if($dor_result) {
+            return $this->secondStepView();
+        }
+        redirect('install/first-step');
+    }
 
-        $dorgen = new Dorgens();
-        $dorgen_result = $dorgen->installDorgen($dorgen_name, $category_id);
+    public function firstStepView()
+    {
+        $categories = new \App\GlobalModels\Categories();
+        $categories = $categories->all();
+        return View::result('admin/first_step', ['categories' => $categories]);
+    }
 
-        return $dorgen_result;
+    public function secondStepView()
+    {
+        return View::result('admin/second_step');
     }
 
     public function secondStep()
     {
-        $posts_categories_string = isset($_REQUEST['categories']) ?? '';
+        $posts_categories_string = $_REQUEST['categories'] ?? '';
         $posts_categories = explode(',', $posts_categories_string);
         if(empty($posts_categories)) {
             return View::result('404');
         }
         $categories_model = new Categories();
+        $result =  $categories_model->createCategories($posts_categories);
 
-        return $categories_model->createCategories($posts_categories);
+        if(!$result) return redirect('admin/second-step');
+        return $this->thirdStepView();
+    }
+
+    public function thirdStepView()
+    {
+        return View::result('admin/third_step');
     }
 
     public function thirdStep()
     {
-        $keywords_string = isset($_REQUEST['keywords']) ?? '';
+        $keywords_string = $_REQUEST['keywords'] ?? '';
         $keywords = explode(',', $keywords_string);
         if(empty($keywords)) {
             return View::result('404');
         }
         $keywords_model = new Keywords();
-
-        return $keywords_model->createKeywords($keywords);
-    }
-
-    public function done()
-    {
-        die('done');
+        $result = $keywords_model->createKeywords($keywords);
+        if($result) {
+            return redirect('admin/done');
+        } else {
+            return redirect('');
+        }
     }
 }

@@ -36,12 +36,12 @@ abstract class TitleParser extends Parser
 
         while(count($result) < $this->results_count && $parse_tries < 5)//пока не получим нужное кличество тайтлов или пока не накапает 5 попыток
         {
-//            if(!empty($next_title)) {
-//                $new_title = $next_title;
-//                $next_title = '';
-//            } else{
+            if(!empty($next_title)) {
+                $new_title = $next_title;
+                $next_title = '';
+            } else{
                 $new_title = '';
-//            }
+            }
 
             while(mb_strlen($new_title) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword, $this->page);
@@ -56,10 +56,10 @@ abstract class TitleParser extends Parser
                 foreach ($titles as $title) {
                     $title = $this->validate($title);
                     if($title){
-//                        if(mb_strlen($new_title) >= $this->length) {
-//                            $next_title = $title;
-//                            break 1;
-//                        }
+                        if(mb_strlen($new_title) >= $this->length) {
+                            $next_title = $title;
+                            break 1;
+                        }
                         $new_title .= ' - ' . $title;
                     }
                 }

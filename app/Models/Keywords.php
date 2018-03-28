@@ -60,11 +60,11 @@ class Keywords extends Model
         $data = [];
         foreach($keywords as $keyword)
         {
-            $category = array_rand($categories, 0);
+            $c_number = array_rand($categories, 1);
             $data[] = [
                 'ti' => $keyword,
-                'cid' => $category['_id'],
-                'cti' => $category['ti'],
+                'cid' => $categories[$c_number]['_id'],
+                'cti' => $categories[$c_number]['ti'],
                 'pc' => 0 //post count
             ];
         }
