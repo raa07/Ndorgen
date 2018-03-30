@@ -41,6 +41,7 @@ class GeneratorDemon extends Demon
 
     public function run()
     {
+        $GLOBALS['tries'] = 0;
         $tasks = new Tasks;
         $tasks = $tasks->all();
         foreach($tasks as $task) {

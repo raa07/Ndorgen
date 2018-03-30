@@ -12,7 +12,7 @@ class MainController
         $posts_model = new Posts;
         $posts = $posts_model->allPaginated($current_page);
         $pages_count = $posts_model->getPagesCount();
-//        return $this->test();
+        return $this->test();
 
         return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }
@@ -29,19 +29,16 @@ class MainController
 
 //        $demon1 = new Demons\ScheduleDemon();
 //        $demon1->run();
+//        $demon1->createTask([10, 15], 1, 'localhost');
 
 
 //        $keyword = new \App\Models\Keywords();
 //        $keyword->postNeed();
 
-//        $demon1->createTask([10, 15], 1, 'localhost');
 
 //        $category = new \App\GlobalModels\Categories();
 ////        $category->createCategory('тестовая категория');
 //        $category_id = iterator_to_array($category->all())[0]['_id'];
-//
-//        $dorgen = new \App\GlobalModels\Dorgens();
-//        $dorgen->createDorgen(Dorgen()->getDomain(), $category_id);
 
 
 //        $demon2 = new \Demons\GeneratorDemon();
@@ -50,8 +47,8 @@ class MainController
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run('кроссовки', 1, 65));
 
-        $test2 = new Tools\Parsers\Content\BingContentParser;
-        var_dump($test2->run('кроссовки', 11, 300));
+//        $test2 = new Tools\Parsers\Content\BingContentParser;
+//        var_dump($test2->run('кроссовки', 11, 300));
 
 //        $test3 = new Tools\Parsers\Comment\BingCommentParser;
 //        var_dump($test3->run('кроссовки', 5, 100));
@@ -71,8 +68,8 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 //
-//        $generator = new \Tools\Generators\Generators\PostsGenerator();
-//        $generator->generateElements(8);//
+        $generator = new \Tools\Generators\Generators\PostsGenerator();
+        $generator->generateElements(8);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        var_dump($generator->generateElements(5));

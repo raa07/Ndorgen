@@ -9,7 +9,10 @@ abstract class Parser
 
     protected function request($url)//запрос к поисковику
     {
-
+        $GLOBALS['tries']++;
+        if($GLOBALS['tries'] >= 20) {
+            die('api request limit');
+        }
         $accountKey = static::API_KEY;
         
         $opts = [
