@@ -7,7 +7,7 @@ use App\GlobalModels\Tasks;
 
 class ScheduleDemon extends Demon
 {
-    public function createTask(array $count_intervals, int $type, string $dorgen) : bool
+        public function createTask(array $count_intervals, int $type, string $dorgen) : bool
     {
         if(empty($dorgen)) return false;
         $tasks = new Tasks;
@@ -22,6 +22,9 @@ class ScheduleDemon extends Demon
         $dorgens = new Dorgens;
         $dorgens = $dorgens->getAll();
         foreach($dorgens as $dorgen) {
+            if(!$dorgen->isActive()) {
+                continue;
+            }
             if($dorgen->needUsers()) {
                 $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
             }

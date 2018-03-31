@@ -31,11 +31,11 @@ class MainController
 
 //        $demon1 = new Demons\ScheduleDemon();
 //        $demon1->run();
-//        $demon1->createTask([10, 15], 1, 'localhost');
+//        $demon1->createTask([5, 10], 1, 'localhost');
 
 
 //        $keyword = new \App\Models\Keywords();
-//        $keyword->postNeed();
+//        $keyword = $keyword->getUnused();
 
 
 //        $category = new \App\GlobalModels\Categories();
@@ -43,17 +43,17 @@ class MainController
 //        $category_id = iterator_to_array($category->all())[0]['_id'];
 
 
-        $demon2 = new \Demons\GeneratorDemon();
-        $demon2->run();
+//        $demon2 = new \Demons\GeneratorDemon();
+//        $demon2->run();
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
-//        var_dump($test->run('кроссовки', 1, 65));
+//        var_dump($test->run($keyword, 1, 65));
 
 //        $test2 = new Tools\Parsers\Content\BingContentParser;
-//        var_dump($test2->run('кроссовки', 11, 300));
+//        var_dump($test2->run($keyword, 1, 100));
 
 //        $test3 = new Tools\Parsers\Comment\BingCommentParser;
-//        var_dump($test3->run('кроссовки', 5, 100));
+//        var_dump($test3->run($keyword, 1, 100));
 
 //        $test4 = new \Tools\Parsers\User\VkUserParser();
 //        var_dump($test4->run(40));
@@ -71,13 +71,13 @@ class MainController
 //        var_dump($unusedUser);
 //
 //        $generator = new \Tools\Generators\Generators\PostsGenerator();
-//        $generator->generateElements(8);//
+//        $generator->generateElements(2);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        var_dump($generator->generateElements(5));
 
-//        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
-//        $generator_comments->generateElements(10, 10, 1);
+        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
+        $generator_comments->generateElements(2, 2, 1);
         echo '</pre>';
 
     }

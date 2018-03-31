@@ -34,13 +34,13 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $keyword_name = $keyword['ti'];
 
         $title_parser = new BingTitleParser();
-        $title_parser = $title_parser->run($keyword_name, 1, 65);
+        $title_parser = $title_parser->run($keyword, 1, 65);
         $title = $title_parser[0];
         $title = empty($title) ? 'error' : $title;
 
 
         $content_parser = new BingContentParser();
-        $content_parser = $content_parser->run($keyword_name, 1, 50);
+        $content_parser = $content_parser->run($keyword, 1, 50);
         $content = reset($content_parser);
         $content = empty($content) ? 'error' : $content;
 

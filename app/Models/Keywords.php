@@ -7,6 +7,10 @@ use \MongoDB\BSON\ObjectID;
 
 class Keywords extends Model
 {
+    const PAGE_OFFSET_TITLE = '_t';
+    const PAGE_OFFSET_CONTENT = '_cn';
+    const PAGE_OFFSET_COMMENT = '_cm';
+
     public function createKeyword(
         string $title,
         string $category_id,
@@ -16,12 +20,13 @@ class Keywords extends Model
             'ti' => $title,
             'cid' => $category_id,
             'cti' => $category_title,
-            'pc' => 0 //post count
+            'pc' => 0, //post count,
+            'po_t' => 0, //page offset titles
+            'po_cn' => 0, //page offset content
+            'po_cm' => 0, //page offset comments
         ];
 
-        $result = $this->insert($keyword);
-
-        return (bool)$result;
+        return $this->insert($keyword);
     }
 
     // получение кейворда с меньшим количеством постов
@@ -41,6 +46,14 @@ class Keywords extends Model
         $this->collection->updateOne(
             ['_id' => $id],
             ['$inc' => ['pc' => 1]]
+        );
+    }
+
+    public function addPageOffset(ObjectID $id, string $suffix)
+    {
+        $this->collection->updateOne(
+            ['_id' => $id],
+            ['$inc' => ['po'.$suffix => 1]]
         );
     }
 

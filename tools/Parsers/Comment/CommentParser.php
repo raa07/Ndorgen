@@ -3,6 +3,7 @@ namespace Tools\Parsers\Comment;
 
 use Tools\DuplicatesValidators\Validators\CommentsDuplicatesValidator;
 use Tools\Parsers\Parser;
+use App\Models\Keywords;
 
 abstract class CommentParser extends Parser
 {
@@ -17,7 +18,7 @@ abstract class CommentParser extends Parser
     {
         $this->keyword = $keyword;
         $this->results_count = $result_count;
-        $this->page = $page;
+        $this->page = $page + $keyword['po'.Keywords::PAGE_OFFSET_COMMENT];
         $this->length = $length;
 
         $result = $this->parse();
@@ -30,11 +31,13 @@ abstract class CommentParser extends Parser
         $result = [];
         $tries = 0;
         $links_validator = new CommentsDuplicatesValidator;
+        $keyword_model = new Keywords();
 
         while(count($result) < $this->results_count && $tries !== 5)
         {
             $links = $this->get_links();
             $links = $links_validator->validate($links);
+            $keyword_model->addPageOffset($this->keyword['_id'], Keywords::PAGE_OFFSET_COMMENT); //повышаем отступ в страницах парса для этого ключевика
 
             $last_count = count($result);
             $new_result = $this->parse_comments($links);
@@ -49,7 +52,7 @@ abstract class CommentParser extends Parser
 
     public function get_links()//получаем ссылки для парса
     {
-        $url = $this->compareUrl($this->keyword, $this->page);
+        $url = $this->compareUrl($this->keyword['ti'], $this->page);
         $data = $this->request($url);
 
         $links = [];

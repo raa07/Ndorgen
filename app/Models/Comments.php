@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Model;
+use \MongoDB\BSON\ObjectID;
 
 class Comments extends Model
 {
     public function create(string $text,
-       string $pid,
+       ObjectID $pid,
        array $author):bool
     {
         $date = date('F j, Y');

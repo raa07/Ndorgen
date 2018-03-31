@@ -3,6 +3,8 @@ namespace Tools\Parsers\Content;
 
 use Tools\DuplicatesValidators\Validators\ContentDuplicatesValidator;
 use Tools\Parsers\Parser;
+use App\Models\Keywords;
+
 //парсер контента
 abstract class ContentParser extends Parser
 {
@@ -17,7 +19,7 @@ abstract class ContentParser extends Parser
     {
         $this->keyword = $keyword;
         $this->results_count = $result_count;
-        $this->page = $page;
+        $this->page = $page + $keyword['po'.Keywords::PAGE_OFFSET_CONTENT];
         $this->length = $length;
 
         return $this->parse();
@@ -29,6 +31,7 @@ abstract class ContentParser extends Parser
         $parse_tries = 0;
         $result = [];
         $links_validator = new ContentDuplicatesValidator;
+        $keyword_model = new Keywords();
         $next_desc = '';
 
         while(count($result) < $this->results_count && $parse_tries < 10)//пока не получим нужное кличество контента или пока не накапает 5 попыток
@@ -41,7 +44,7 @@ abstract class ContentParser extends Parser
             }
 
             while(mb_strlen($new_desc) < $this->length && $tries < 10) {
-                $url = $this->compareUrl($this->keyword, $this->page);
+                $url = $this->compareUrl($this->keyword['ti'], $this->page);
                 $data = $this->request($url);
                 $links_data = [];
 
@@ -49,6 +52,7 @@ abstract class ContentParser extends Parser
                     $links_data[$entity['url']] = $entity['snippet'];
                 }
                 $descs = $links_validator->validate($links_data);
+                $keyword_model->addPageOffset($this->keyword['_id'], Keywords::PAGE_OFFSET_CONTENT); //повышаем отступ в страницах парса для этого ключевика
                 foreach($descs as $desc) {
                     $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
 

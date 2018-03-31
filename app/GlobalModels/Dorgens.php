@@ -32,7 +32,8 @@ class Dorgens extends GlobalModel
         $dorgen = [
             'n' => $name,
             'cid' => $cid,
-            'csid' => $csid
+            'csid' => $csid,
+            'a' => 1
         ];
 
         return $this->insert($dorgen);
@@ -82,6 +83,14 @@ class Dorgens extends GlobalModel
         $user_model = new Users();
 
         return $user_model->userNeed();
+    }
+
+    public function isActive()
+    {
+        if(!isset($this->dorgen['_id'])) return false;
+        if(!isset($this->dorgen['a'])) return false;
+
+        return (bool)$this->dorgen['a'];
     }
 
     public function getName()
