@@ -6,6 +6,7 @@ Router::add('/post', 'PostsController', 'post');
 Router::add('/about-us', 'MainController', 'aboutUs');
 Router::add('/contact-us', 'MainController', 'contactUs');
 Router::add('/blog', 'CategoriesController', 'allCategories');
+Router::add('/category', 'CategoriesController', 'category');
 
 Router::add('/install', 'InstallController', 'firstStepView');
 Router::add('/install/second-step', 'InstallController', 'firstStep');

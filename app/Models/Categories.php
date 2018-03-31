@@ -6,29 +6,42 @@ use App\Model;
 
 class Categories extends Model
 {
+    const LINK_VALID = '/[^a-z0-9\-]*/';
+
     public function createCategory(string $title):bool
     {
         $link = transcriptLink($title);
         $category = [
             'ti' => $title,
-            'l' => $link
+            'lk' => $link
         ];
 
-        $result = $this->insert($category);
-
-        return (bool)$result;
+        return $this->insert($category);
     }
 
     public function createCategories(array $categories):bool
     {
-        foreach($categories as $category)
-        {
+        foreach ($categories as $category) {
             $category = trim($category);
+            $link = transcriptLink($category);
+
             $data[] = [
-                'ti' => $category
+                'ti' => $category,
+                'lk' => $link
             ];
         }
 
         return $this->insertMany($data);
+    }
+
+    public function getByLink(string $link)
+    {
+        if(!preg_match(self::LINK_VALID, $link)) {
+            return [];
+        }
+
+        $category = $this->findOne('lk', $link);
+
+        return empty($category) ? [] : $category;
     }
 }

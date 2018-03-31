@@ -50,6 +50,22 @@ class Posts extends Model
         return empty($post) ? [] : $post;
     }
 
+    public function getPostsByCategoryLink(string $link, int $page)
+    {
+        $category_model = new Categories();
+        $category = $category_model->getByLink($link);
+        if(empty($category)) {
+            return [];
+        }
+
+        $page = abs($page-1);
+        $offset = $page * self::POST_PER_PAGE;
+        $this->pagesCount = (int) ceil($this->collection->count(['cid' => $category['_id']]) / self::POST_PER_PAGE);
+        $posts = $this->collection->find(['cid' => $category['_id']], ['limit' => self::POST_PER_PAGE, 'skip' => $offset]);
+
+        return $posts ?? [];
+    }
+
     public function getNotUpdated()
     {
         $filter  = [];
@@ -72,7 +88,7 @@ class Posts extends Model
     public static function generateLink(string $title):string
     {
         $link = transcriptLink($title);
-        $link .= '-'.rand(10, 99);
+        $link .= '-' . rand(10, 99);
         return $link;
     }
 
@@ -90,6 +106,7 @@ class Posts extends Model
         $page = abs($page-1);
         $offset = $page * self::POST_PER_PAGE;
         $this->pagesCount = (int) ceil($this->collection->count() / self::POST_PER_PAGE);
+
         return $this->collection->find([], ['limit' => self::POST_PER_PAGE, 'skip' => $offset]);
     }
 

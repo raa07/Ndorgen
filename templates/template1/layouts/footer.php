@@ -7,15 +7,15 @@
 <!--TODO:категории-->
         </ul>
     </div>
-    <div class="gadget">
-        <h2 class="star"><span>Спонсоры</span></h2>
-        <div class="clr"></div>
-        <ul class="ex_menu">
-            <li><a href="http://www.dreamtemplate.com/">your mom</a><br />
-                Over 6,000+ users</li>
-
-        </ul>
-    </div>
+<!--    <div class="gadget">-->
+<!--        <h2 class="star"><span>Спонсоры</span></h2>-->
+<!--        <div class="clr"></div>-->
+<!--        <ul class="ex_menu">-->
+<!--            <li><a href="http://www.dreamtemplate.com/">your mom</a><br />-->
+<!--                Over 6,000+ users</li>-->
+<!---->
+<!--        </ul>-->
+<!--    </div>-->
 </div>
 <div class="clr"></div>
 </div>

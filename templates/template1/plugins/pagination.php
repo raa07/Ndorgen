@@ -6,7 +6,11 @@
                 if($i === $current_page) {
                     echo '<span>'.$i.'</span>';
                 } else {
-                    echo '<a href="?page='.$i.'">'.$i.'</a>';
+                    if(isset($category_link)) {
+                        echo '<a href="?id='.$category_link.'&page='.$i.'">'.$i.'</a>';
+                    } else {
+                        echo '<a href="?page='.$i.'">'.$i.'</a>';
+                    }
                 }
             }
             //TODO: нормальная пагинация

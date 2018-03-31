@@ -47,8 +47,8 @@ class MainController
 //        $demon1->run();
 //        $demon1->createTask([5, 10], 1, 'localhost');
 
-//            $demon2 = new \Demons\GeneratorDemon();
-//            $demon2->run();
+//        $demon2 = new \Demons\GeneratorDemon();
+//        $demon2->run();
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run($keyword, 1, 65));
