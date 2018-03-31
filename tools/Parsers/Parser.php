@@ -4,13 +4,13 @@ namespace Tools\Parsers;
 
 abstract class Parser
 {
-    const API_KEY = '42f2fa2b199943008675f3ac7a6b67b8';
-    const PAGE_COUNT = 10;
+    const API_KEY = 'e3e0f964ccf040d99948a9dea839b082';
+    const PAGE_COUNT = 20;
 
     protected function request($url)//запрос к поисковику
     {
         $GLOBALS['tries']++;
-        if($GLOBALS['tries'] >= 20) {
+        if($GLOBALS['tries'] >= 50) {
             die('api request limit');
         }
         $accountKey = static::API_KEY;

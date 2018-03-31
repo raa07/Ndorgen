@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Model;
+use \MongoDB\BSON\ObjectID;
 
 class Posts extends Model
 {
@@ -13,9 +14,9 @@ class Posts extends Model
 
     public function createPost(string $title,
     string $text,
-    int $category_id,
+    ObjectID $category_id,
     string $category_name,
-    string $keyword_id,
+    ObjectID $keyword_id,
     string $keyword_name,
     array $author):bool
     {

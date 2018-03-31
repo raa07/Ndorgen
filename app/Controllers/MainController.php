@@ -20,6 +20,8 @@ class MainController
     public function test()
     {
         echo '<pre>';
+
+        $GLOBALS['tries'] = 0;
 //        $links_array = ['https://geektimes.ru/all/', 'https://www.instagram.com/'];
 //        $links = new \App\GlobalModels\Links(\App\GlobalModels\Links::$POST_PREFIX);
 //        $links->addLink('https://www.instagram.com/');
@@ -41,8 +43,8 @@ class MainController
 //        $category_id = iterator_to_array($category->all())[0]['_id'];
 
 
-//        $demon2 = new \Demons\GeneratorDemon();
-//        $demon2->run();
+        $demon2 = new \Demons\GeneratorDemon();
+        $demon2->run();
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run('кроссовки', 1, 65));
@@ -68,8 +70,8 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 //
-        $generator = new \Tools\Generators\Generators\PostsGenerator();
-        $generator->generateElements(8);//
+//        $generator = new \Tools\Generators\Generators\PostsGenerator();
+//        $generator->generateElements(8);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        var_dump($generator->generateElements(5));

@@ -18,7 +18,7 @@ class CommentsGenerator extends Generator implements GeneratorInterface
 
         for($i=0; $i < $result_count; $i++)
         {
-            $result[] = $this->generateElement(100, $comments_for_post);/////////////////////////////////
+            $result[] = $this->generateElement(50, $comments_for_post);/////////////////////////////////
         }
 
         return $result;
