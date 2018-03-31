@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>SITENAME</title>
+    <title><?=Dorgen()->getDomain()?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -18,16 +18,15 @@
                 </form>
             </div>
             <div class="logo">
-                <h1><a href="index.html">SITENAME</a></h1>
+                <h1><a href="/"><?=Dorgen()->getDomain()?></a></h1>
             </div>
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
-                    <li class="active"><a href="index.html"><span>Home Page</span></a></li>
-                    <li><a href="support.html"><span>Support</span></a></li>
-                    <li><a href="about.html"><span>About Us</span></a></li>
-                    <li><a href="blog.html"><span>Blog</span></a></li>
-                    <li><a href="contact.html"><span>Contact Us</span></a></li>
+                    <li class="active"><a href="index.html"><span>Главная страница</span></a></li>
+                    <li><a href="about-us"><span>Про нас</span></a></li>
+                    <li><a href="blog"><span>Блог</span></a></li>
+                    <li><a href="contact-us"><span>Контакты</span></a></li>
                 </ul>
             </div>
             <div class="clr"></div>

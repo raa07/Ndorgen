@@ -74,11 +74,15 @@ class Keywords extends Model
         foreach($keywords as $keyword)
         {
             $c_number = array_rand($categories, 1);
+            $keyword = trim($keyword);
             $data[] = [
                 'ti' => $keyword,
                 'cid' => $categories[$c_number]['_id'],
                 'cti' => $categories[$c_number]['ti'],
-                'pc' => 0 //post count
+                'pc' => 0, //post count,
+                'po_t' => 0, //page offset titles
+                'po_cn' => 0, //page offset content
+                'po_cm' => 0, //page offset comments
             ];
         }
 

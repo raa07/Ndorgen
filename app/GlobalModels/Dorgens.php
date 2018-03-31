@@ -43,7 +43,7 @@ class Dorgens extends GlobalModel
     {
         $dorgen = $this->findOne('n', $host);
 
-        return $dorgen['csid'] ?? false;
+        return $dorgen ?? false;
     }
 
     public function getAll()

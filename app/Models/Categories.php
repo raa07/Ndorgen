@@ -8,8 +8,10 @@ class Categories extends Model
 {
     public function createCategory(string $title):bool
     {
+        $link = transcriptLink($title);
         $category = [
-            'ti' => $title
+            'ti' => $title,
+            'l' => $link
         ];
 
         $result = $this->insert($category);
@@ -21,6 +23,7 @@ class Categories extends Model
     {
         foreach($categories as $category)
         {
+            $category = trim($category);
             $data[] = [
                 'ti' => $category
             ];

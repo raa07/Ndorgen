@@ -12,7 +12,7 @@ class MainController
         $posts_model = new Posts;
         $posts = $posts_model->allPaginated($current_page);
         $pages_count = $posts_model->getPagesCount();
-        return $this->test();
+//        return $this->test();
 
         return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }
@@ -47,8 +47,8 @@ class MainController
 //        $demon1->run();
 //        $demon1->createTask([5, 10], 1, 'localhost');
 
-            $demon2 = new \Demons\GeneratorDemon();
-            $demon2->run();
+//            $demon2 = new \Demons\GeneratorDemon();
+//            $demon2->run();
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run($keyword, 1, 65));
@@ -84,5 +84,15 @@ class MainController
 //        $generator_comments->generateElements(2, 2, 1);
         echo '</pre>';
 
+    }
+
+    public function aboutUs()
+    {
+        return View::result('template1/about_us');
+    }
+
+    public function contactUs()
+    {
+        return View::result('template1/contact_us');
     }
 }

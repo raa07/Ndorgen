@@ -51,6 +51,6 @@ class Dorgen
             static::$category = $category;
         }
 
-        return static::$category;
+        return static::$category['csid'];
     }
 }

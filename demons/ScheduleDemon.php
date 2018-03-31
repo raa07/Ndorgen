@@ -21,13 +21,13 @@ class ScheduleDemon extends Demon
     {
         $dorgens = new Dorgens;
         $dorgens = $dorgens->getAll();
-        foreach($dorgens as $dorgen) {
+        foreach($dorgens as $dorgen) { //важно, что бы генерация юзеров проходила перед всеми остальными генерациями
             if(!$dorgen->isActive()) {
                 continue;
             }
-//            if($dorgen->needUsers()) {
-//                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
-//            }
+            if($dorgen->needUsers()) {
+                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
+            }
             if($dorgen->needPosts()) {
                 $this->createTask([10, 20], Tasks::TYPE_POST, $dorgen->getName());
             }

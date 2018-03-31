@@ -19,7 +19,7 @@ class VkUserParser extends UserParser implements UserParserInterface
 
     private function requestApi(string $url):array
     {
-        $proxy = '35.196.26.166:3128';
+        $proxy = '167.99.193.192:3128';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
