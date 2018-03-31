@@ -4,6 +4,9 @@ namespace App;
 
 abstract class ParentModel
 {
+    protected $collection_name;
+    public $collection;
+
     public function all() //получение всех записей из бд
     {
         return $this->collection->find();
@@ -27,11 +30,19 @@ abstract class ParentModel
         return (bool) $result ? $result : [];
     }
 
-    public function getById(string $id)
+    public function getById($id)
     {
-        $id = new \MongoDB\BSON\ObjectID($id);
+        if(is_string($id)) {
+            $id = new \MongoDB\BSON\ObjectID($id);
+        }
         return $this->collection->findOne(['_id' => $id]);
     }
 
-
+    public function removeById($id)
+    {
+        if(is_string($id)) {
+            $id = new \MongoDB\BSON\ObjectID($id);
+        }
+        return $this->collection->deleteOne(['_id' => $id]);
+    }
 }

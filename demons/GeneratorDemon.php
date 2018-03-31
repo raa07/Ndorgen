@@ -20,7 +20,7 @@ class GeneratorDemon extends Demon
         $this->users_generator = new UsersGenerator;
     }
 
-    public function doTasks($task) : array
+    public function doTask($task) : array
     {
         $count_start = $task['cs'];
         $count_end = $task['ce'];
@@ -42,11 +42,12 @@ class GeneratorDemon extends Demon
     public function run()
     {
         $GLOBALS['tries'] = 0;
-        $tasks = new Tasks;
-        $tasks = $tasks->all();
+        $tasks_model = new Tasks;
+        $tasks = $tasks_model->all();
         foreach($tasks as $task) {
             Dorgen()->setDomain($task['dor']);
-            $this->doTasks($task);
+            $this->doTask($task);
+            $tasks_model->removeById($task['_id']);
         }
     }
 

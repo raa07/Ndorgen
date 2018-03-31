@@ -29,9 +29,10 @@ class MainController
 
 
 
-//        $demon1 = new Demons\ScheduleDemon();
-//        $demon1->run();
-//        $demon1->createTask([5, 10], 1, 'localhost');
+//            $tasks = new \App\GlobalModels\Tasks();
+//            $tasks->removeById('5abf68fa29e96074163eb48a');
+
+
 
 
 //        $keyword = new \App\Models\Keywords();
@@ -41,10 +42,13 @@ class MainController
 //        $category = new \App\GlobalModels\Categories();
 ////        $category->createCategory('тестовая категория');
 //        $category_id = iterator_to_array($category->all())[0]['_id'];
+//
+//        $demon1 = new Demons\ScheduleDemon();
+//        $demon1->run();
+//        $demon1->createTask([5, 10], 1, 'localhost');
 
-
-//        $demon2 = new \Demons\GeneratorDemon();
-//        $demon2->run();
+            $demon2 = new \Demons\GeneratorDemon();
+            $demon2->run();
 
 //        $test = new Tools\Parsers\Title\BingTitleParser;
 //        var_dump($test->run($keyword, 1, 65));
@@ -76,8 +80,8 @@ class MainController
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        var_dump($generator->generateElements(5));
 
-        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
-        $generator_comments->generateElements(2, 2, 1);
+//        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
+//        $generator_comments->generateElements(2, 2, 1);
         echo '</pre>';
 
     }

@@ -25,9 +25,9 @@ class ScheduleDemon extends Demon
             if(!$dorgen->isActive()) {
                 continue;
             }
-            if($dorgen->needUsers()) {
-                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
-            }
+//            if($dorgen->needUsers()) {
+//                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
+//            }
             if($dorgen->needPosts()) {
                 $this->createTask([10, 20], Tasks::TYPE_POST, $dorgen->getName());
             }
