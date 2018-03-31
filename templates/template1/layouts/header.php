@@ -23,7 +23,7 @@
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
-                    <li class="active"><a href="index.html"><span>Главная страница</span></a></li>
+                    <li class="active"><a href="/"><span>Главная страница</span></a></li>
                     <li><a href="about-us"><span>Про нас</span></a></li>
                     <li><a href="blog"><span>Блог</span></a></li>
                     <li><a href="contact-us"><span>Контакты</span></a></li>

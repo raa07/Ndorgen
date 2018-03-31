@@ -26,13 +26,13 @@ class ScheduleDemon extends Demon
                 continue;
             }
             if($dorgen->needUsers()) {
-                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
+                $this->createTask([10, 15], Tasks::TYPE_USER, $dorgen->getName());
             }
             if($dorgen->needPosts()) {
-                $this->createTask([10, 20], Tasks::TYPE_POST, $dorgen->getName());
+                $this->createTask([2, 5], Tasks::TYPE_POST, $dorgen->getName());
             }
             if($dorgen->needComments()) {
-                $this->createTask([10, 20], Tasks::TYPE_USER, $dorgen->getName());
+                $this->createTask([2, 5], Tasks::TYPE_USER, $dorgen->getName());
             }
         }
     }

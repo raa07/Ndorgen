@@ -32,8 +32,12 @@ class MainController
 //            $tasks = new \App\GlobalModels\Tasks();
 //            $tasks->removeById('5abf68fa29e96074163eb48a');
 
-
-
+//            $global_category = new \App\GlobalModels\Categories();
+//            $global_categories = $global_category->all();
+//            foreach ($global_categories as $cat)
+//            {
+//                var_dump($cat);
+//            }
 
 //        $keyword = new \App\Models\Keywords();
 //        $keyword = $keyword->getUnused();

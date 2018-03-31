@@ -37,6 +37,7 @@ class Dorgen
 
     public static function setDomain($domain)
     {
+        $domain = preg_replace('/[^a-zA-Z0-9]+/', '', $domain);
         self::$domain = $domain;
     }
 
