@@ -16,7 +16,7 @@ class Posts extends Model
     public function __construct()
     {
         self::$posts_per_page = Config::get('generators')['posts_per_page'];
-        Model::_construct();
+        parent::__construct();
     }
 
     public function createPost(string $title,

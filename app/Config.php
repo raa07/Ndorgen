@@ -17,7 +17,6 @@ class Config
 
     public static function get(string $field, $default = false)
     {
-        var_dump(self::$config);
         return self::$config[$field] ?? $default;
     }
 }

@@ -2,14 +2,13 @@
 
 namespace App;
 
-use App\GlobalModels\Categories;
 use App\GlobalModels\Dorgens;
 use Tools\Router;
 
 
 class Dorgen
 {
-    private static $instance;
+    private static $instance = null;
     private static $domain;
     private static $category = false;
 
@@ -17,7 +16,7 @@ class Dorgen
     private function __clone(){}
 
     public static function getInstance() {
-        if(null !== self::$instance)
+        if(is_null(self::$instance))
         {
             self::$instance = new self();
         }
