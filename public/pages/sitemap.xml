@@ -1,157 +1,262 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/about-us</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/blog</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/contact-us</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-mujskie-krossovki-v-internet-magazine--jenskie-krossovki-kupit-krossovki-jenskie-v-kieve-74</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=adidas-ofitsialnij-internetmagazin--izkupi-me-maratonki-maratonki-maratonki-maratonki-80</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=gruppa-pitstsa-najki--originalnie-krossovki-nike-so-skidkoj-do-50-kupit-73</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-adidas-ebay--krossovki-internet-magazin--kupit-krossovki-61</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=adidas--ofitsialnij-predstavitel-v-ukraine--internet--adidas-ofitsialnij-internet-magazin-v-ukraine-18</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=vorona-najki-skachat-besplatno-pesnyu-i-slushat-onlajn--kupit-jenskie-krossovki-nike-s-dostavkoj-po-ukraine-59</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=2</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=3</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=pervaya-kategoriya</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=tretya-kategoriya</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=svetyaschiesya-krossovki-krossovki-so-svetyaschejsya-podoshvoj--new-balance-ofitsialnij-sajt-kupit-krossovki-new-82</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=originalni-maratonki-i-markovi-sportni-stoki-adidas--originalni-maratonki-adidas-nike-i-puma-na-niski-tseni-52</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=jenskie-kedi-nike-dlya-sporta-i-povsednevnoj-jizni--krossovki-nike-air-maks-kupit-krossovki-nike-v-moskve-78</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-zimnie-mujskie-krossovki-v-internet-magazine--mujskie-krossovki--kupit-mujskie-krossovki-v-moskve-10</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=sportni-komplekti-galaxysport94--magazini-adidas-v-sanktpeterburge-adresa-magazinov-43</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-nike-id-nike-id-sozdat-svoi--krossovki--kupit-krossovki-nike-air-max-95-v-moskve-37</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=1</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-saukoni-v-kieve-tremp-krossovki-saucony--basketbolnij-magazin-slamdunk-su-vse-dlya-basketbola-26</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=adidas--katalog-vseh-tovarov-i-modelej-adidas---adidas-ofitsialnij-internetmagazin-odejda-65</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=nike-roshe-run-kupit-mujskie-krossovki-po-nizkim-tsenam--stremejt-na-najki-km-real-madrid-moje-da-izigrae-10</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-jenskie-internetmagazin-baldinini--krossovki--instagram-photos-and-videos-44</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=2</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=3</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=1</loc>
-  <lastmod>2018-04-01T09:26:20+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/about-us</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/blog</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/contact-us</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-mujskie-krossovki-v-internet-magazine--jenskie-krossovki-kupit-krossovki-jenskie-v-kieve-74</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=adidas-ofitsialnij-internetmagazin--izkupi-me-maratonki-maratonki-maratonki-maratonki-80</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=gruppa-pitstsa-najki--originalnie-krossovki-nike-so-skidkoj-do-50-kupit-73</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-adidas-ebay--krossovki-internet-magazin--kupit-krossovki-61</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=adidas--ofitsialnij-predstavitel-v-ukraine--internet--adidas-ofitsialnij-internet-magazin-v-ukraine-18</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=vorona-najki-skachat-besplatno-pesnyu-i-slushat-onlajn--kupit-jenskie-krossovki-nike-s-dostavkoj-po-ukraine-59</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=svetyaschiesya-krossovki-krossovki-so-svetyaschejsya-podoshvoj--new-balance-ofitsialnij-sajt-kupit-krossovki-new-82</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=originalni-maratonki-i-markovi-sportni-stoki-adidas--originalni-maratonki-adidas-nike-i-puma-na-niski-tseni-52</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=jenskie-kedi-nike-dlya-sporta-i-povsednevnoj-jizni--krossovki-nike-air-maks-kupit-krossovki-nike-v-moskve-78</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-zimnie-mujskie-krossovki-v-internet-magazine--mujskie-krossovki--kupit-mujskie-krossovki-v-moskve-10</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=2</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=3</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=4</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=pervaya-kategoriya</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=tretya-kategoriya</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=sportni-komplekti-galaxysport94--magazini-adidas-v-sanktpeterburge-adresa-magazinov-43</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-nike-id-nike-id-sozdat-svoi--krossovki--kupit-krossovki-nike-air-max-95-v-moskve-37</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-saukoni-v-kieve-tremp-krossovki-saucony--basketbolnij-magazin-slamdunk-su-vse-dlya-basketbola-26</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=adidas--katalog-vseh-tovarov-i-modelej-adidas---adidas-ofitsialnij-internetmagazin-odejda-65</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=nike-roshe-run-kupit-mujskie-krossovki-po-nizkim-tsenam--stremejt-na-najki-km-real-madrid-moje-da-izigrae-10</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-jenskie-internetmagazin-baldinini--krossovki--instagram-photos-and-videos-44</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=hilyadi-originalni-sportni-stoki-na-niski-tseni-ot-mbw-bg--forum-ofitsialnij-sajt-adidas-banderolka-90</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-tovari-nike-v-internet-magazine-brandshop-v-moskve--95-najki-zolotie-najk-magazin-v-tveri-94</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=saucony-originals-ofitsialnij-rossijskij-sajt-saucony--k-internet-magazin-sportivnoj-obuvi-v-minske-71</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupete-brzo-i-lesno-ot-adidas--kupit-tovari-adidas-originals-v-internet-magazine-19</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/?page=1</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=vidi-najka-nike--butsi-nike-kupit-futbolnie-butsi-najk-v-kieve-ukraine-24</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-ekaterinburg-wstore96--instagram-photos-and--sportivnaya-odejda-sportivnaya-obuv-detskie-krossovki-65</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-sportivnie-kostyumi-adidas-nedorogo-v-ukraine--promopaket--obuvki--chanta--promotsiya-20</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=niki-dlya-devushek-niki-su--krossovki-nike-v-ukraine-sravnit-tseni-kupit-14</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=krossovki-adidas--kupit-mujskie-i-jenskie-krossovki--internetmagazin-krossovok--kupit-krossovki-kiev-50</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-mujskie-krossovki-adidas-originals-v-internet--kupit-krossovki-adidas-v-minske-adidas-v-minske-50</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-nike-v-minske-firmennij-sportivnij-magazin-najk--nike-air-max-95--kak-otlichit-poddelku-20</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=mujskie-krossovki-v-magazinah-ecco-v-belorussii--internetmagazin-krossovok-minsk-i-vsya-belarus-97</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=magazin-adidas--adidas-v-gomele--adidas-entsiklopediya-modi--adidas--instagram-photos-and-videos-40</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=u-najki-okrug-petrovskij-0-tips--jenskie-krossovki-nike-internet-magazin-nedorogo-spb-24</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=kupit-krossovki-asics-v-kieve-i-ukraine-ryukzaki-herschel--kak-vibrat-krossovki-dlya-bega-tehnologii-begovoj-obuvi-64</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=sportni-chanti-magazin-za-chanti--veriga-sportni-magazini-za-markovi-sportni-stoki-i-maratonki-77</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=retseptiki-ot-najki-receptinayka--instagram-photos--price--russell-ray-najki-music-on-google-play-95</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=-basketbolnie-krossovki-nike-najk-adidas--krossovki-mujskie-kupit-mujskie-krossovki-nedorogie-38</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/post?id=futbolnie-butsi-v-internet-magazine-footballstore--damski-yaketa-i-palta--stilni-i-topli-hm-bg-66</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=2</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=3</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=4</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://ec2-52-15-35-95.us-east-2.compute.amazonaws.com/category?id=vtoraya-kategoriya&amp;page=1</loc>
+    <lastmod>2018-04-02T22:05:54+00:00</lastmod>
+    <priority>0.41</priority>
+  </url>
 
 
 </urlset>
