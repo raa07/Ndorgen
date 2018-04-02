@@ -32,7 +32,7 @@ class ScheduleDemon extends Demon
                 $this->createTask([2, 5], Tasks::TYPE_POST, $dorgen->getName());
             }
             if($dorgen->needComments()) {
-                $this->createTask([2, 5], Tasks::TYPE_USER, $dorgen->getName());
+                $this->createTask([2, 5], Tasks::TYPE_COMMENT, $dorgen->getName());
             }
         }
     }
