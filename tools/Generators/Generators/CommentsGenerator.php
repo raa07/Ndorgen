@@ -9,6 +9,7 @@ use App\Models\Posts;
 use App\Models\Users;
 use Tools\Generators\GeneratorInterface;
 use Tools\Parsers\Comment\BingCommentParser;
+use App\Config;
 
 
 class CommentsGenerator extends Generator implements GeneratorInterface
@@ -22,7 +23,7 @@ class CommentsGenerator extends Generator implements GeneratorInterface
 
         for($i=0; $i < $result_count; $i++)
         {
-            $result[] = $this->generateElement(50, $comments_for_post);/////////////////////////////////
+            $result[] = $this->generateElement(Config::get('generators')['comment_length'], $comments_for_post);
         }
 
         return $result;
@@ -40,8 +41,6 @@ class CommentsGenerator extends Generator implements GeneratorInterface
             return false;
         }
 
-
-        $keyword_name = $post['kn'];
         $post_id = $post['_id'];
         $keyword = $this->keyword_model->getById($post['kid']);
 

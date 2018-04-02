@@ -9,6 +9,7 @@ use Tools\Generators\Generator;
 use Tools\Generators\GeneratorInterface;
 use Tools\Parsers\Content\BingContentParser;
 use Tools\Parsers\Title\BingTitleParser;
+use App\Config;
 
 class PostsGenerator extends Generator implements GeneratorInterface
 {
@@ -34,13 +35,13 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $keyword_name = $keyword['ti'];
 
         $title_parser = new BingTitleParser();
-        $title_parser = $title_parser->run($keyword, 1, 65);
+        $title_parser = $title_parser->run($keyword, 1, Config::get('generators')['title_length']);
         $title = $title_parser[0];
         $title = empty($title) ? 'error' : $title;
 
 
         $content_parser = new BingContentParser();
-        $content_parser = $content_parser->run($keyword, 1, 50);
+        $content_parser = $content_parser->run($keyword, 1, Config::get('generators')['content_length']);
         $content = reset($content_parser);
         $content = empty($content) ? 'error' : $content;
 
@@ -58,6 +59,6 @@ class PostsGenerator extends Generator implements GeneratorInterface
             $author_model->addPost($author_id);
         }
 
-        return (bool)$result;
+        return $result;
     }
 }

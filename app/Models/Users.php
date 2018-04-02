@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Model;
 use \MongoDB\BSON\ObjectID;
+use App\Config;
 
 class Users extends Model
 {
@@ -61,15 +62,16 @@ class Users extends Model
         );
     }
 
-    public function userNeed()
+    public function userNeed():bool
     {
         $unused = $this->getUnused();
-        if(empty($unused)) return true; //если нету пользователей (не нашло самого неиспользуемого) - значит точно надо создать
-        //если есть ещё пользователи у которых меньше 5 постов - не создаём новых
-        $users_posts_count = 5;///////////////TODO: config
+        if(empty($unused)) {
+            return true;//если нету пользователей (не нашло самого неиспользуемого) - значит точно надо создать
+        }
+        //если есть ещё пользователи у которых меньше N постов - не создаём новых
+        $users_posts_count = Config::get('generators')['posts_per_user'];
         $user = $this->collection->findOne(['pc' => ['$lt' => $users_posts_count]]);
-        $result = isset($user['_id']);
 
-        return $result;
+        return isset($user['_id']);
     }
 }

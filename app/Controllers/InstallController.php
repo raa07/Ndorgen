@@ -5,13 +5,15 @@ use App\View;
 use \App\GlobalModels\Dorgens;
 use \App\Models\Categories;
 use \App\Models\Keywords;
+use App\Config;
+
 
 class InstallController
 {
     public function __construct()
     {
         if(!isset($_REQUEST['pass'])) die('security');
-        if($_REQUEST['pass'] !== 'b2345jh234523b4') {
+        if($_REQUEST['pass'] !== Config::get('general')['install_pass']) {
             die('security');
         }
         if(isset($_REQUEST['dor_name'])){

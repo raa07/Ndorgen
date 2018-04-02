@@ -12,7 +12,7 @@ class MainController
         $posts_model = new Posts;
         $posts = $posts_model->allPaginated($current_page);
         $pages_count = $posts_model->getPagesCount();
-//        return $this->test();
+        return $this->test();
 
         return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }

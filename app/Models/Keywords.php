@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Model;
 use \MongoDB\BSON\ObjectID;
+use App\Config;
 
 class Keywords extends Model
 {
@@ -59,7 +60,7 @@ class Keywords extends Model
 
     public function postNeed()
     {
-        $post_count = 10;///////////////TODO: config
+        $post_count = Config::get('generators')['posts_per_keyword'];
         $keyword = $this->collection->findOne(['pc' => ['$lt' => $post_count]]);
 
         return isset($keyword['_id']);

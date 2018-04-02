@@ -10,19 +10,18 @@ class Tasks extends GlobalModel
     const TYPE_USER = 1;
     const TYPE_COMMENT = 2;
 
-    public function createTask($type, $count_intervals, $dorgen)
+    public function createTask($type, $count_intervals, $dorgen, $additional=[])
     {
         $task = [
             't' => $type,
             'cs' => $count_intervals[0],
             'ce' => $count_intervals[1],
             'dor' => $dorgen,
-            'da' => time()
+            'da' => time(),
+            'a' => $additional
         ];
 
-        $result = $this->insert($task);
-
-        return $result;
+        return $this->insert($task);
     }
 
 }

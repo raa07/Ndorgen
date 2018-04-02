@@ -4,13 +4,20 @@ namespace App\Models;
 
 use App\Model;
 use \MongoDB\BSON\ObjectID;
+use App\Config;
 
 class Posts extends Model
 {
     const LINK_VALID = '/[^a-z0-9\-]*/';
-    const POST_PER_PAGE = 6;
 
     private $pagesCount;
+    private static $posts_per_page;
+
+    public function __construct()
+    {
+        self::$posts_per_page = Config::get('generators')['posts_per_page'];
+        Model::_construct();
+    }
 
     public function createPost(string $title,
     string $text,
@@ -59,9 +66,9 @@ class Posts extends Model
         }
 
         $page = abs($page-1);
-        $offset = $page * self::POST_PER_PAGE;
-        $this->pagesCount = (int) ceil($this->collection->count(['cid' => $category['_id']]) / self::POST_PER_PAGE);
-        $posts = $this->collection->find(['cid' => $category['_id']], ['limit' => self::POST_PER_PAGE, 'skip' => $offset]);
+        $offset = $page * self::$posts_per_page;
+        $this->pagesCount = (int) ceil($this->collection->count(['cid' => $category['_id']]) / self::$posts_per_page);
+        $posts = $this->collection->find(['cid' => $category['_id']], ['limit' => self::$posts_per_page, 'skip' => $offset]);
 
         return $posts ?? [];
     }
@@ -94,23 +101,22 @@ class Posts extends Model
 
     public function commentNeed()
     {
-        $comment_count = 10;///////////////TODO: config
+        $comment_count = Config::get('generators')['comments_per_post'];
         $post = $this->collection->findOne(['cc' => ['$lt' => $comment_count]]);
-        $result = isset($post['_id']);
 
-        return $result;
+        return isset($post['_id']);
     }
 
     public function allPaginated($page)
     {
         $page = abs($page-1);
-        $offset = $page * self::POST_PER_PAGE;
-        $this->pagesCount = (int) ceil($this->collection->count() / self::POST_PER_PAGE);
+        $offset = $page * self::$posts_per_page;
+        $this->pagesCount = (int) ceil($this->collection->count() / self::$posts_per_page);
 
-        return $this->collection->find([], ['limit' => self::POST_PER_PAGE, 'skip' => $offset]);
+        return $this->collection->find([], ['limit' => self::$posts_per_page, 'skip' => $offset]);
     }
 
-    public function getPagesCount()
+    public function getPagesCount():int
     {
         return $this->pagesCount ?? 0;
     }

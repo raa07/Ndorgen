@@ -4,17 +4,18 @@ namespace Demons;
 
 use App\GlobalModels\Dorgens;
 use App\GlobalModels\Tasks;
+use App\Config;
 
 class ScheduleDemon extends Demon
 {
-        public function createTask(array $count_intervals, int $type, string $dorgen) : bool
+        public function createTask(array $count_intervals, int $type, string $dorgen, $additional = []) : bool
     {
-        if(empty($dorgen)) return false;
+        if(empty($dorgen)) {
+            return false;
+        }
         $tasks = new Tasks;
 
-        $result = $tasks->createTask($type, $count_intervals, $dorgen);
-
-        return $result;
+        return $tasks->createTask($type, $count_intervals, $dorgen, $additional);
     }
 
     public function run()
@@ -26,13 +27,13 @@ class ScheduleDemon extends Demon
                 continue;
             }
             if($dorgen->needUsers()) {
-                $this->createTask([10, 15], Tasks::TYPE_USER, $dorgen->getName());
+                $this->createTask(Config::get('generators')['users_count_interval'], Tasks::TYPE_USER, $dorgen->getName());
             }
             if($dorgen->needPosts()) {
-                $this->createTask([2, 5], Tasks::TYPE_POST, $dorgen->getName());
+                $this->createTask(Config::get('generators')['posts_count_interval'], Tasks::TYPE_POST, $dorgen->getName());
             }
             if($dorgen->needComments()) {
-                $this->createTask([2, 5], Tasks::TYPE_COMMENT, $dorgen->getName());
+                $this->createTask(Config::get('generators')['comments_count_interval'], Tasks::TYPE_COMMENT, $dorgen->getName(), ['cpp' => Config::get('generators')['comments_per_post_interval']]);
             }
         }
     }

@@ -9,7 +9,7 @@ use Tools\Router;
 
 class Dorgen
 {
-    private static $instance = null;
+    private static $instance;
     private static $domain;
     private static $category = false;
 
@@ -17,7 +17,7 @@ class Dorgen
     private function __clone(){}
 
     public static function getInstance() {
-        if(is_null(self::$instance))
+        if(null !== self::$instance)
         {
             self::$instance = new self();
         }

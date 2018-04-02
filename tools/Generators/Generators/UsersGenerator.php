@@ -27,9 +27,9 @@ class UsersGenerator extends Generator implements GeneratorInterface
 
     private function save_avatar(string $avatar):string
     {
-        $ext = preg_split('/\./', $avatar);
+        $ext = explode('\.', $avatar);
         $ext = end($ext);
-
+        $filename = '';
         $image = @file_get_contents($avatar);
         if(!$image){
             return '';
@@ -37,8 +37,10 @@ class UsersGenerator extends Generator implements GeneratorInterface
 
         while (true) {
             $filename = uniqid(rand(), true) . '.' . $ext;
-            $img = dirname(__FILE__) . '/../../../public/images/avatars/'.$filename;
-            if (!file_exists($img)) break;
+            $img = __DIR__ . '/../../../public/images/avatars/'.$filename;
+            if (!file_exists($img)) {
+                break;
+            }
         }
 
         $save_result = @file_put_contents($img, $image);

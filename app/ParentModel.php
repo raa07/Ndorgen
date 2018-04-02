@@ -14,14 +14,12 @@ abstract class ParentModel
 
     protected function insert(array $data):bool //вставка данных в бд
     {
-        $result = (bool) $this->collection->insertOne($data);
-        return $result;
+        return (bool) $this->collection->insertOne($data);
     }
 
     protected function insertMany(array $data):bool //вставка массива данных в бд
     {
-        $result = (bool) $this->collection->insertMany($data);
-        return $result;
+        return (bool) $this->collection->insertMany($data);
     }
 
     protected function findOne(string $field, string $value) //получение записи из бд по полю и его значению
