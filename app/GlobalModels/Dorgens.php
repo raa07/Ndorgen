@@ -24,7 +24,7 @@ class Dorgens extends GlobalModel
         if(!$category) {
             return false;
         }
-        return $this->createDorgen($name, $cid, $category['csid']);
+        return $this->createDorgen($name, $cid, $category['сsid']);
     }
 
     public function createDorgen($name, $cid, $csid)

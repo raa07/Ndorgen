@@ -35,6 +35,13 @@ class InstallController
         return $category->createCategory($category_name);
     }
 
+    public function firstStepView()
+    {
+        $categories = new \App\GlobalModels\Categories();
+        $categories = $categories->all();
+        return View::result('admin/first_step', ['categories' => $categories]);
+    }
+
     public function firstStep()
     {
         $dor_name = $_REQUEST['dor_name'];
@@ -46,13 +53,6 @@ class InstallController
             return $this->secondStepView();
         }
         redirect('install/first-step');
-    }
-
-    public function firstStepView()
-    {
-        $categories = new \App\GlobalModels\Categories();
-        $categories = $categories->all();
-        return View::result('admin/first_step', ['categories' => $categories]);
     }
 
     public function secondStepView()
