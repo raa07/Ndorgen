@@ -7,7 +7,7 @@ function Dorgen()
 
 function redirect($url)
 {
-    header('Location: http://'.Dorgen()->getDomain().'/'.$url);
+    header('Location: http://'.$_SERVER['SERVER_NAME'].'/'.$url);
     return true;
 }
 
