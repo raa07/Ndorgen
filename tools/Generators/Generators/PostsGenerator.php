@@ -36,22 +36,24 @@ class PostsGenerator extends Generator implements GeneratorInterface
 
         $title_parser = new BingTitleParser();
         $title_parser = $title_parser->run($keyword, 1, Config::get('generators')['title_length']);
+        var_dump($title_parser);
         if(!isset($title_parser[0])) {
-            return false;
+            $title = 'error';
+        } else {
+            $title = $title_parser[0];
+            $title = empty($title) ? 'error' : $title;
         }
-        $title = $title_parser[0];
-        $title = empty($title) ? 'error' : $title;
-
 
         $content_parser = new BingContentParser();
         $content_parser = $content_parser->run($keyword, 1, Config::get('generators')['content_length']);
+
         $content = reset($content_parser);
         $content = empty($content) ? 'error' : $content;
 
         $author_model = new Users;
         $author = $author_model->getUnused();
         if(empty($author)) {
-            return false;
+            throw new \Exception("ERROR - USERS NOT FOUND");
         }
         $author = iterator_to_array($author);
         $author_id = $author['_id'];

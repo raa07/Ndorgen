@@ -19,7 +19,7 @@ class VkUserParser extends UserParser implements UserParserInterface
 
     private function requestApi(string $url):array
     {
-        $proxy = '167.99.193.192:3128';
+        $proxy = \App\Config::get('generators')['proxy'];
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

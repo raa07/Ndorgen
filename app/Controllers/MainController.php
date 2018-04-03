@@ -47,8 +47,8 @@ class MainController
 ////        $category->createCategory('тестовая категория');
 //        $category_id = iterator_to_array($category->all())[0]['_id'];
 //
-        $demon1 = new Demons\ScheduleDemon();
-        $demon1->run();
+//        $demon1 = new Demons\ScheduleDemon();
+//        $demon1->run();
 //        $demon1->createTask([5, 10], 1, 'localhost');
 
 //        $demon2 = new \Demons\GeneratorDemon();
@@ -81,8 +81,8 @@ class MainController
 //        $generator = new \Tools\Generators\Generators\PostsGenerator();
 //        $generator->generateElements(2);//
 
-//        $generator = new \Tools\Generators\Generators\UsersGenerator();
-//        var_dump($generator->generateElements(5));
+        $generator = new \Tools\Generators\Generators\UsersGenerator();
+        var_dump($generator->generateElements(5));
 
 //        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
 //        $generator_comments->generateElements(2, 2, 1);
