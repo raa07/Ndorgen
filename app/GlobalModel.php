@@ -14,7 +14,7 @@ abstract class GlobalModel extends ParentModel
         $db_name = $this->db_name ?? Config::get('db')['settings_db'];
         try
         {
-            $cnn = new \MongoDB\Client();
+            $cnn = new \MongoDB\Client('mongodb://localhost:27017');
             $this->conn = $cnn->$db_name;
             $collection_name = $this->collection_name ?? static::class;
             $this->collection = $this->conn->$collection_name;

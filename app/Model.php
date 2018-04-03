@@ -12,7 +12,7 @@ abstract class Model extends ParentModel
         $db_name = Dorgen::getDomain();
         try
         {
-            $cnn = new \MongoDB\Client();
+            $cnn = new \MongoDB\Client('mongodb://localhost:27017');
             $db = $cnn->$db_name;
             $collection_name = static::$collection_name ?? static::class;
             $this->collection = $db->$collection_name;
