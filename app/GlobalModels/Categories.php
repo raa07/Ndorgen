@@ -11,7 +11,7 @@ class Categories extends GlobalModel
         $sid = transcriptLink($name);
         $category = [
             'n' => $name,
-            'sid' => $sid
+            'сsid' => $sid
         ];
 
         return $this->insert($category);
