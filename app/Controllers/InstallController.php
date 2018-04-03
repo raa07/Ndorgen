@@ -21,15 +21,18 @@ class InstallController
         }
     }
 
+    public function createCategoryView()
+    {
+        return View::result('admin/category_create');
+    }
+
     public function createCategory()
     {
-        $category_name = $_REQUEST['name'];
-        $category_csid = $_REQUEST['csid'];
+        $category_name = $_REQUEST['category'];
 
         $category = new \App\GlobalModels\Categories();
-        $result = $category->createCategory($category_name, $category_csid);
 
-        return $result;
+        return $category->createCategory($category_name);
     }
 
     public function firstStep()

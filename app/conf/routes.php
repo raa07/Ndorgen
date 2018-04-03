@@ -14,4 +14,5 @@ Router::add('/install/third-step', 'InstallController', 'secondStep');
 Router::add('/install/third-step-form', 'InstallController', 'thirdStep');
 Router::add('/install/done', 'InstallController', 'done');
 
+Router::add('/install/create-category-form', 'InstallController', 'createCategoryView');
 Router::add('/install/create-category', 'InstallController', 'createCategory');

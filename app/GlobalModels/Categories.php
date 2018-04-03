@@ -6,15 +6,14 @@ use App\GlobalModel;
 
 class Categories extends GlobalModel
 {
-    public function createCategory($name, $sid)
+    public function createCategory($name)
     {
-        $dorgen = [
+        $sid = transcriptLink($name);
+        $category = [
             'n' => $name,
             'sid' => $sid
         ];
 
-        $result = $this->insert($dorgen);
-
-        return $result;
+        return $this->insert($category);
     }
 }
