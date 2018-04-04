@@ -43,7 +43,7 @@ class CommentsGenerator extends Generator implements GeneratorInterface
 
         $post_id = $post['_id'];
         $keyword = $this->keyword_model->getById($post['kid']);
-        if(null !== $keyword) {
+        if(null === $keyword) {
             return false;
         }
 
