@@ -61,7 +61,10 @@ class Keywords extends Model
     public function postNeed()
     {
         $post_count = Config::get('generators')['posts_per_keyword'];
-        $keyword = $this->collection->findOne(['pc' => ['$lt' => $post_count]]);
+        $page_count = Config::get('generators')['posts_page_max'];
+        $keyword = $this->collection->findOne(['pc' => ['$lt' => $post_count],
+            'po_t' => ['$lt' => $page_count],
+            'po_cn' => ['$lt' => $page_count]]);
 
         return isset($keyword['_id']);
     }

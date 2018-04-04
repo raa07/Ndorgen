@@ -14,6 +14,7 @@ $configs['generators'] = [
     'comments_per_post' => 12,
     'posts_per_page' => 10,
     'posts_per_user' => 10,
+    'posts_page_max' => 10,
 
     'users_count_interval' => [1, 5],
     'posts_count_interval' => [2, 6],

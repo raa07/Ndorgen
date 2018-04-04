@@ -48,6 +48,7 @@ class GeneratorDemon extends Demon
             Dorgen()->setDomain($task['dor']);
             $this->doTask($task);
             $tasks_model->removeById($task['_id']);
+            $GLOBALS['tries'] = 0;
         }
     }
 

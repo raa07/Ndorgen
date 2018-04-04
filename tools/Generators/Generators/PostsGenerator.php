@@ -36,7 +36,7 @@ class PostsGenerator extends Generator implements GeneratorInterface
 
         $title_parser = new BingTitleParser();
         $title_parser = $title_parser->run($keyword, 1, Config::get('generators')['title_length']);
-        var_dump($title_parser);
+
         if(!isset($title_parser[0])) {
             $title = 'error';
         } else {
