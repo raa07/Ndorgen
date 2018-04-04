@@ -24,7 +24,7 @@ $configs['generators'] = [
 
 
     'comment_length' => 200,
-    'title_length' => 50,
+    'title_length' => 20,
     'content_length' => 100,
 
     'proxy' => '177.72.56.155:3128'
