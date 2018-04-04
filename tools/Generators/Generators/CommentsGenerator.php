@@ -61,6 +61,7 @@ class CommentsGenerator extends Generator implements GeneratorInterface
             if($new_result) {
                 $post_model->addComment($post_id);
                 $author_model->addComment($author_id);
+                $GLOBALS['tries'] = 0;
             }
 
             $result = $new_result && $result;

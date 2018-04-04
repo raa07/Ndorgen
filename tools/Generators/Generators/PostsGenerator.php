@@ -65,6 +65,7 @@ class PostsGenerator extends Generator implements GeneratorInterface
         if($result) {
             $keyword_model->addPost($keyword_id);
             $author_model->addPost($author_id);
+            $GLOBALS['tries'] = 0;
         }
 
         return $result;
