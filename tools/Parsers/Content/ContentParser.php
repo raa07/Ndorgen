@@ -93,10 +93,10 @@ abstract class ContentParser extends Parser
         $content = preg_replace('/(\s.)$/u', '', $content);
         $content = trim($content);
         if(!preg_match('/([а-яА-Я])/u', $content)) {
-            $result = false;
+            return false;
         }//если нету русских букв
         if(!preg_match('/( )/u', $content)) {
-            $result = false;
+            return false;
         }
         if(substr_count($content, ' ') <= 2) {
             return false;

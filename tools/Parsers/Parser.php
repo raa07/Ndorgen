@@ -5,9 +5,9 @@ namespace Tools\Parsers;
 abstract class Parser
 {
     const API_KEY = 'e3e0f964ccf040d99948a9dea839b082';
-    const PAGE_COUNT = 20;
+    const PAGE_COUNT = 5;
 
-    protected function request($url)//запрос к поисковику
+    protected function request($url, $page_count = self::PAGE_COUNT)//запрос к поисковику
     {
         $GLOBALS['tries']++;
         if($GLOBALS['tries'] >= 50) {

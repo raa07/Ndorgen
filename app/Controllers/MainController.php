@@ -12,7 +12,7 @@ class MainController
         $posts_model = new Posts;
         $posts = $posts_model->allPaginated($current_page);
         $pages_count = $posts_model->getPagesCount();
-//        return $this->test();
+        return $this->test();
 
         return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }
@@ -39,8 +39,8 @@ class MainController
 //                var_dump($cat);
 //            }
 
-//        $keyword = new \App\Models\Keywords();
-//        $keyword = $keyword->getUnused();
+        $keyword = new \App\Models\Keywords();
+        $keyword = $keyword->getUnused();
 
 
 //        $category = new \App\GlobalModels\Categories();
@@ -54,8 +54,8 @@ class MainController
 //        $demon2 = new \Demons\GeneratorDemon();
 //        $demon2->run();
 
-//        $test = new Tools\Parsers\Title\BingTitleParser;
-//        var_dump($test->run($keyword, 1, 65));
+        $test = new Tools\Parsers\Title\BingTitleParser;
+        var_dump($test->run($keyword, 1, 100));
 
 //        $test2 = new Tools\Parsers\Content\BingContentParser;
 //        var_dump($test2->run($keyword, 1, 100));
@@ -84,8 +84,8 @@ class MainController
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        var_dump($generator->generateElements(5));
 
-        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
-        $generator_comments->generateElements(3, 2, 1);
+//        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
+//        $generator_comments->generateElements(3, 2, 1);
         echo '</pre>';
 
     }

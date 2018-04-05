@@ -9,8 +9,11 @@ abstract class TitleParser extends Parser
 {
     private $results_count;
     private $page;
+    private $results_per_page;
     private $keyword;
     private $length;
+
+    const LENGTH_PER_PAGE = 50;
 
     abstract protected function compareUrl(string $keyword, int $page);
 
@@ -20,6 +23,8 @@ abstract class TitleParser extends Parser
         $this->page = $page + $keyword['po'.Keywords::PAGE_OFFSET_TITLE];
         $this->keyword = $keyword;
         $this->length = $length;
+
+        $this->results_per_page = (int) ceil(($length/self::LENGTH_PER_PAGE) * $result_count);
 
         $titles = $this->parse();//парсим тайтлы
 
@@ -32,7 +37,7 @@ abstract class TitleParser extends Parser
         $result = [];
         $tries = 0;
         $parse_tries = 0;
-        $links_validator = new TitlesDuplicatesValidator();
+//        $links_validator = new TitlesDuplicatesValidator();
         $keyword_model = new Keywords();
         $next_title = '';
 
@@ -47,18 +52,13 @@ abstract class TitleParser extends Parser
 
             while(mb_strlen($new_title) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword['ti'], $this->page);
-                $data = $this->request($url);//делаем запрос к поисковику
-                $links_data = [];
+                $data = $this->request($url, $this->results_per_page);//делаем запрос к поисковику
 
-                foreach($data as $entity) {
-                    $links_data[$entity['url']] = $entity['name'];
-                }
-
-                $titles = $links_validator->validate($links_data);
+                //$titles = $links_validator->validate($links_data); //прячем на будущее
                 $keyword_model->addPageOffset($this->keyword['_id'], Keywords::PAGE_OFFSET_TITLE); //повышаем отступ в страницах парса для этого ключевика
 
-                foreach ($titles as $title) {
-                    $title = $this->validate($title);
+                foreach ($data as $title) {
+                    $title = $this->validate($title['name']);
                     if($title){
                         if(mb_strlen($new_title) >= $this->length) {
                             $next_title = $title;
@@ -95,15 +95,15 @@ abstract class TitleParser extends Parser
         $title = trim($title);
         $title = preg_replace('/(\s.)$/u', '', $title);
 
-        if(substr_count($title, ' ') <= 2) {
-            return false;
-        }
+//        if(substr_count($title, ' ') <= 2) {
+//            return false;
+//        }
         if(!preg_match('/([а-яА-Я])/u', $title)) {
             return false;
         }
-        if(!preg_match('/( )/u', $title)) {
-            return false;
-        }
+//        if(!preg_match('/( )/u', $title)) {
+//            return false;
+//        }
         $title = ucfirst($title);
 
         return $title;

@@ -21,9 +21,7 @@ abstract class CommentParser extends Parser
         $this->page = $page + $keyword['po'.Keywords::PAGE_OFFSET_COMMENT];
         $this->length = $length;
 
-        $result = $this->parse();
-
-        return $result;
+        return $this->parse();
     }
 
     protected function parse()
@@ -36,7 +34,7 @@ abstract class CommentParser extends Parser
         while(count($result) < $this->results_count && $tries !== 5)
         {
             $links = $this->get_links();
-            $links = $links_validator->validate($links);
+//            $links = $links_validator->validate($links); // оставим на будущее
             $keyword_model->addPageOffset($this->keyword['_id'], Keywords::PAGE_OFFSET_COMMENT); //повышаем отступ в страницах парса для этого ключевика
 
             $last_count = count($result);
