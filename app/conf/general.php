@@ -27,5 +27,6 @@ $configs['generators'] = [
     'title_length' => 20,
     'content_length' => 100,
 
-    'proxy' => '177.72.56.155:3128'
+    'proxy' => '177.72.56.155:3128',
+    'api_tries' => 100
 ];

@@ -10,7 +10,7 @@ abstract class Parser
     protected function request($url, $page_count = self::PAGE_COUNT)//запрос к поисковику
     {
         $GLOBALS['tries']++;
-        if($GLOBALS['tries'] >= 50) {
+        if($GLOBALS['tries'] >= \App\Config::get('generators')['api_tries']) {
             die('api request limit');
         }
         $accountKey = static::API_KEY;
