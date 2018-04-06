@@ -99,7 +99,7 @@ class Posts extends Model
         return $link;
     }
 
-    public function commentNeed()
+    public function commentNeed():bool
     {
         $comment_count = Config::get('generators')['comments_per_post'];
         $post = $this->collection->findOne(['cc' => ['$lt' => $comment_count]]);
