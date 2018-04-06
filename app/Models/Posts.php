@@ -68,7 +68,7 @@ class Posts extends Model
         $page = abs($page-1);
         $offset = $page * self::$posts_per_page;
         $this->pagesCount = (int) ceil($this->collection->count(['cid' => $category['_id']]) / self::$posts_per_page);
-        $posts = $this->collection->find(['cid' => $category['_id']], ['limit' => self::$posts_per_page, 'skip' => $offset]);
+        $posts = $this->collection->find(['cid' => $category['_id']], ['limit' => self::$posts_per_page, 'skip' => $offset, 'sort' => ['d' => -1]]);
 
         return $posts ?? [];
     }
@@ -113,7 +113,7 @@ class Posts extends Model
         $offset = $page * self::$posts_per_page;
         $this->pagesCount = (int) ceil($this->collection->count() / self::$posts_per_page);
 
-        return $this->collection->find([], ['limit' => self::$posts_per_page, 'skip' => $offset]);
+        return $this->collection->find([], ['limit' => self::$posts_per_page, 'skip' => $offset, 'sort' => ['d' => -1]]);
     }
 
     public function getPagesCount():int
