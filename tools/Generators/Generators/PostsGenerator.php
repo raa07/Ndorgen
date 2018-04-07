@@ -5,6 +5,7 @@ namespace Tools\Generators\Generators;
 use App\Models\Keywords;
 use App\Models\Posts;
 use App\Models\Users;
+use Tools\Bots\Twitter;
 use Tools\Generators\Generator;
 use Tools\Generators\GeneratorInterface;
 use Tools\Parsers\Content\BingContentParser;
@@ -13,8 +14,11 @@ use App\Config;
 
 class PostsGenerator extends Generator implements GeneratorInterface
 {
+    private $bot;
+
     public function generateElements($result_count):array
     {
+        $this->bot = new Twitter();
         $result = [];
 
         for($i=0; $i < $result_count; $i++)
@@ -67,12 +71,12 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $post = new Posts;
         $result = $post->createPost($title, $content, $category_id, $category_name, $keyword_id, $keyword_name, $author);
 
-        if($result) {
-            $keyword_model->addPost($keyword_id);
-            $author_model->addPost($author_id);
-            $GLOBALS['tries'] = 0;
-        }
+        $this->bot::send($title, $result['lk']);
 
-        return $result;
+        $keyword_model->addPost($keyword_id);
+        $author_model->addPost($author_id);
+        $GLOBALS['tries'] = 0;
+
+        return true;
     }
 }

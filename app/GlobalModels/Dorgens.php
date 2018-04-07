@@ -17,20 +17,21 @@ class Dorgens extends GlobalModel
         parent::__construct();
     }
 
-    public function installDorgen($name, $cid)
+    public function installDorgen($name, $host, $cid)
     {
         $category_model = new Categories();
         $category = $category_model->getById($cid);
         if(!$category) {
             return false;
         }
-        return $this->createDorgen($name, $cid, $category['сsid']);
+        return $this->createDorgen($name, $host, $cid, $category['сsid']);
     }
 
-    public function createDorgen($name, $cid, $csid)
+    public function createDorgen($name, $host, $cid, $csid)
     {
         $dorgen = [
             'n' => $name,
+            'h' => $host,
             'cid' => $cid,
             'csid' => $csid,
             'a' => 1
@@ -39,7 +40,7 @@ class Dorgens extends GlobalModel
         return $this->insert($dorgen);
     }
 
-    public function getCategoryByHost($host)
+    public function getDorByHost($host)
     {
         $dorgen = $this->findOne('n', $host);
 

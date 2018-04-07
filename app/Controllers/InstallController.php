@@ -45,9 +45,10 @@ class InstallController
     public function firstStep()
     {
         $dor_name = $_REQUEST['dor_name'];
+        $dor_host = $_REQUEST['dor_host'];
         $category_id = $_REQUEST['category_id'];
         $dor = new Dorgens();
-        $dor_result = $dor->installDorgen($dor_name, $category_id);
+        $dor_result = $dor->installDorgen($dor_name, $dor_host, $category_id);
 
         if($dor_result) {
             return $this->secondStepView();

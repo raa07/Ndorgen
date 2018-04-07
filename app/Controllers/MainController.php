@@ -13,6 +13,7 @@ class MainController
         $posts = $posts_model->allPaginated($current_page);
         $pages_count = $posts_model->getPagesCount();
 //        return $this->test();
+//        return $this->test2();
 
         return View::result('template1/index', ['posts' => $posts, 'pages_count' => $pages_count, 'current_page' => $current_page]);
     }
@@ -80,16 +81,27 @@ class MainController
 //        $user->addPost($unusedUser['_id']);
 //        var_dump($unusedUser);
 //
-        $generator = new \Tools\Generators\Generators\PostsGenerator();
-        $generator->generateElements(2);//
+        echo '</pre>';
+
+    }
+
+    public function test2()
+    {
+        $demon1 = new Demons\ScheduleDemon();
+        $demon1->run();
+//        $demon1->createTask([5, 10], 1, 'localhost');
+
+        $demon2 = new \Demons\GeneratorDemon();
+        $demon2->run();
+
+//        $generator = new \Tools\Generators\Generators\PostsGenerator();
+//        $generator->generateElements(2);//
 
 //        $generator = new \Tools\Generators\Generators\UsersGenerator();
 //        var_dump($generator->generateElements(5));
 
 //        $generator_comments = new \Tools\Generators\Generators\CommentsGenerator();
 //        $generator_comments->generateElements(3, 2, 1);
-        echo '</pre>';
-
     }
 
     public function aboutUs()

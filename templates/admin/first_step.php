@@ -1,7 +1,8 @@
 <?php include('layouts/header.php'); ?>
 
 <form action="/install/second-step" method="POST">
-    <input name="dor_name" placeholder="доменное имя доргена">
+    <input name="dor_name" placeholder="название доргена">
+    <input name="dor_host" placeholder="доменное имя доргена">
     <br><br>
     <select name="category_id">
         <? foreach($categories as $category): ?>

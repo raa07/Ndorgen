@@ -25,7 +25,7 @@ class Posts extends Model
     string $category_name,
     ObjectID $keyword_id,
     string $keyword_name,
-    array $author):bool
+    array $author)
     {
 
         $link = self::generateLink($title);
@@ -43,10 +43,11 @@ class Posts extends Model
             'cc' => 0,
             'a' => $author
         ];
+        $post['_id'] = new \MongoDB\BSON\ObjectID();
 
-        $result = $this->insert($post);
+        $this->insert($post);
 
-        return $result;
+        return $post;
     }
 
     public function getPost(string $link)
