@@ -2,3 +2,4 @@
 public/images/avatars/
 composer.lock
 vendor/
+app/conf/
