@@ -45,13 +45,17 @@ abstract class ContentParser extends Parser
 
             while(mb_strlen($new_desc) < $this->length && $tries < 10) {
                 $url = $this->compareUrl($this->keyword['ti'], $this->page);
-                $data = $this->request($url);
+                $data = $this->request($url, 10);
+                if(!$data) {
+                    break 1;
+                }
                 $links_data = [];
+                $descs = [];
 
                 foreach($data as $entity) {
-                    $links_data[$entity['url']] = $entity['snippet'];
+                    $descs[] = $entity['snippet'];
                 }
-                $descs = $links_validator->validate($links_data);
+//                $descs = $links_validator->validate($links_data);
                 $keyword_model->addPageOffset($this->keyword['_id'], Keywords::PAGE_OFFSET_CONTENT); //повышаем отступ в страницах парса для этого ключевика
                 foreach($descs as $desc) {
                     $desc_result = $this->validate($desc);//проводим валидацию дискрипшена
@@ -72,6 +76,7 @@ abstract class ContentParser extends Parser
                 $result[] = $new_desc;
             } else {
                 $parse_tries++;
+                break;
             }
             $tries = 0;
         }

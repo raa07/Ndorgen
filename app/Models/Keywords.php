@@ -33,7 +33,11 @@ class Keywords extends Model
     // получение кейворда с меньшим количеством постов
     public function getUnused()
     {
-        $filter  = [];
+        $post_count = Config::get('generators')['posts_per_keyword'];
+        $page_count = Config::get('generators')['posts_page_max'];
+        $filter  = ['pc' => ['$lt' => $post_count],
+            'po_t' => ['$lt' => $page_count, '$ne' => 999],
+            'po_cn' => ['$lt' => $page_count, '$ne' => 999]];
         $options = ['sort' => ['pc' => 1]];
 
         $keyword = $this->collection->findOne($filter, $options);
@@ -50,6 +54,14 @@ class Keywords extends Model
         );
     }
 
+    public function deleteFromPostGeneration(ObjectID $id)
+    {
+        $this->collection->updateOne(
+            ['_id' => $id],
+            ['$set' =>['po_t' => 999, 'po_cn' => 999]]
+        );
+    }
+
     public function addPageOffset(ObjectID $id, string $suffix)
     {
         $this->collection->updateOne(
@@ -62,9 +74,10 @@ class Keywords extends Model
     {
         $post_count = Config::get('generators')['posts_per_keyword'];
         $page_count = Config::get('generators')['posts_page_max'];
-        $keyword = $this->collection->findOne(['pc' => ['$lt' => $post_count],
-            'po_t' => ['$lt' => $page_count],
-            'po_cn' => ['$lt' => $page_count]]);
+        $keyword = $this->collection->findOne(
+            ['pc' => ['$lt' => $post_count],
+            'po_t' => ['$lt' => $page_count, '$ne' => 999],
+            'po_cn' => ['$lt' => $page_count, '$ne' => 999]]);
 
         return isset($keyword['_id']);
     }

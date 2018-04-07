@@ -28,5 +28,9 @@ $configs['generators'] = [
     'content_length' => 100,
 
     'proxy' => '177.72.56.155:3128',
-    'api_tries' => 100
+    'api_tries' => 30
+];
+
+$configs['creds'] = [
+    'azure' => 'e3e0f964ccf040d99948a9dea839b082'
 ];

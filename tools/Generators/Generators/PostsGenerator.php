@@ -33,22 +33,27 @@ class PostsGenerator extends Generator implements GeneratorInterface
         $category_name = $keyword['cti'];
         $keyword_id = $keyword['_id'];
         $keyword_name = $keyword['ti'];
-
-        $title_parser = new BingTitleParser();
-        $title_parser = $title_parser->run($keyword, 1, Config::get('generators')['title_length']);
-
-        if(!isset($title_parser[0])) {
-            $title = 'error';
-        } else {
-            $title = $title_parser[0];
-            $title = empty($title) ? 'error' : $title;
-        }
+        $title_length = Config::get('generators')['title_length'];
 
         $content_parser = new BingContentParser();
         $content_parser = $content_parser->run($keyword, 1, Config::get('generators')['content_length']);
 
         $content = reset($content_parser);
-        $content = empty($content) ? 'error' : $content;
+        $content = empty($content) ? '' : $content;
+
+        $title_parser = new BingTitleParser();
+        $title_parser = $title_parser->run($keyword, 1, $title_length);
+
+        if(!isset($title_parser[0])) {
+            if(empty($content)) {
+                $keyword_model->deleteFromPostGeneration($keyword_id);
+                return false;
+            }
+            $title = substr($content, 0, $title_length);
+        } else {
+            $title = $title_parser[0];
+            $title = empty($title) ? 'error' : $title;
+        }
 
         $author_model = new Users;
         $author = $author_model->getUnused();

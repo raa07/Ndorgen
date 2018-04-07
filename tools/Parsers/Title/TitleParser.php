@@ -53,6 +53,9 @@ abstract class TitleParser extends Parser
             while(mb_strlen($new_title) < $this->length && $tries < 5) {
                 $url = $this->compareUrl($this->keyword['ti'], $this->page);
                 $data = $this->request($url, $this->results_per_page);//делаем запрос к поисковику
+                if(!$data) {
+                    break 1;
+                }
 
                 //$titles = $links_validator->validate($links_data); //прячем на будущее
                 $keyword_model->addPageOffset($this->keyword['_id'], Keywords::PAGE_OFFSET_TITLE); //повышаем отступ в страницах парса для этого ключевика
@@ -74,6 +77,7 @@ abstract class TitleParser extends Parser
                 $result[] = substr($new_title, 3);
             } else {
                 $parse_tries++;
+                break;
             }
             $tries = 0;
         }
